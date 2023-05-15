@@ -13,7 +13,7 @@ public class GestionPrograma {
         this.iGestionPeliculas = iGestionPeliculas;
     }
 
-    public static void menuPrograma(){
+    public void menuPrograma(){
         Scanner lector = new Scanner(System.in);
         int finBucle = 0;
         int opcion;

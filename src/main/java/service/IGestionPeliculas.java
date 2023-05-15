@@ -32,12 +32,15 @@ public interface IGestionPeliculas {
     Set<Escenario> listarEscenario(double alquiler);
     Set<Escenario> listarEscenario(int id, double alquiler);
 
-    void comprobacionFicheroEmpleados() throws IOException;
-    List<Empleado> cargarFicheroEmpleados() throws IOException;
+    void crearFicheroEmpleados();
+    void escribirFicheroEmpleados();
+    List<Empleado> cargarFicheroEmpleados();
 
-    void comprobacionFicheroEscenarios() throws IOException;
-    Set<Escenario> cargarFicheroEscenarios() throws IOException;
+    void crearFicheroEscenarios();
+    void escribirFicheroEscenarios();
+    Set<Escenario> cargarFicheroEscenarios();
 
+    void crearFicheroBinarioPeliculas();
     void escribirFicheroBinarioPeliculas(Pelicula pelicula);
     void cargarFicheroBinarioPeliculas();
 }

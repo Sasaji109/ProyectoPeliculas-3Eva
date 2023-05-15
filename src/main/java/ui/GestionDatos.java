@@ -1,8 +1,11 @@
 package ui;
 
 import common.Constantes;
+import domain.Empleado;
 import service.IGestionPeliculas;
 
+import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -53,8 +56,13 @@ public class GestionDatos {
     public static final String OPCION2D4 = "4. Eliminar un Escenario";
     public static final String OPCION2D5 = "5. Eliminar la lista de Escenarios";
 
-    public static void menuGestionar() {
+    public void menuGestionar() {
         Scanner lector = new Scanner(System.in);
+        iGestionPeliculas.crearFicheroEmpleados();
+        iGestionPeliculas.crearFicheroEscenarios();
+        iGestionPeliculas.crearFicheroBinarioPeliculas();
+        iGestionPeliculas.escribirFicheroEmpleados();
+        iGestionPeliculas.escribirFicheroEscenarios();
         int finBucle = 0;
         int opcion;
         do {
@@ -79,7 +87,7 @@ public class GestionDatos {
         } while (finBucle!=1);
     }
 
-    public static void opcion1D() {
+    public void opcion1D() {
         Scanner lector = new Scanner(System.in);
         int finBucle = 0;
         int opcion;
@@ -112,7 +120,7 @@ public class GestionDatos {
         } while (finBucle!=1);
     }
 
-    public static void opcion2D() {
+    public void opcion2D() {
         Scanner lector = new Scanner(System.in);
         int finBucle = 0;
         int opcion;

@@ -116,23 +116,41 @@ public class GestionPeliculas implements IGestionPeliculas {
     }
 
     @Override
-    public void comprobacionFicheroEmpleados() throws IOException {
-        daoPeliculasFicheros.comprobacionFicheroEmpleados();
+    public void crearFicheroEmpleados() {
+        daoPeliculasFicheros.crearFicheroEmpleados();
+    }
+
+
+    @Override
+    public void escribirFicheroEmpleados() {
+        List<Empleado> empleados = daoPeliculas.getListaEmpleado();
+        daoPeliculasFicheros.escribirFicheroEmpleados();
     }
 
     @Override
-    public List<Empleado> cargarFicheroEmpleados() throws IOException {
+    public List<Empleado> cargarFicheroEmpleados() {
         return daoPeliculasFicheros.cargarFicheroEmpleados();
     }
 
     @Override
-    public void comprobacionFicheroEscenarios() throws IOException {
-        daoPeliculasFicheros.comprobacionFicheroEscenarios();
+    public void crearFicheroEscenarios() {
+        daoPeliculasFicheros.crearFicheroEscenarios();
     }
 
     @Override
-    public Set<Escenario> cargarFicheroEscenarios() throws IOException {
+    public void escribirFicheroEscenarios() {
+        Set<Escenario> escenarios = daoPeliculas.getListaEscenario();
+        daoPeliculasFicheros.escribirFicheroEscenarios();
+    }
+
+    @Override
+    public Set<Escenario> cargarFicheroEscenarios() {
         return daoPeliculasFicheros.cargarFicheroEscenarios();
+    }
+
+    @Override
+    public void crearFicheroBinarioPeliculas() {
+        daoPeliculasFicheros.crearFicheroBinarioPeliculas();
     }
 
     @Override

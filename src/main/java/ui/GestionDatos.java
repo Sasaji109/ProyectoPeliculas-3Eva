@@ -15,14 +15,24 @@ public class GestionDatos {
         this.iGestionPeliculas = iGestionPeliculas;
     }
 
+    private static final String password = "109";
+
     public static boolean validarUsuario() {
         Scanner lector = new Scanner(System.in);
-        System.out.println("Introduce tu correo electrónico:");
+
+        System.out.println(Constantes.CORREO);
         String correo = lector.nextLine();
-        String patronCorreo = "^[A-Za-z0-9]+@[A-Za-z0-9]+$";
-        Pattern patron = Pattern.compile(patronCorreo);
-        Matcher matcher = patron.matcher(correo);
-        return matcher.matches();
+        System.out.println(Constantes.CONTRASENA);
+        String contrasena = lector.nextLine();
+
+        if (contrasena.equals(password)) {
+            String patronCorreo = "^[A-Za-z0-9]+@[A-Za-z0-9]+\\.[A-Za-z]+$";
+            Pattern patron = Pattern.compile(patronCorreo);
+            Matcher matcher = patron.matcher(correo);
+            return matcher.matches();
+        } else {
+            return false;
+        }
     }
 
     public static final String MENUGESTIONAR = "Introduce la opción que quieras: ";

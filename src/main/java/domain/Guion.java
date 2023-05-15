@@ -15,8 +15,4 @@ public class Guion {
         this.escritor = escritor;
         this.idioma = idioma;
     }
-
-    public void imprimirGuion(Guion guion) {
-
-    }
 }

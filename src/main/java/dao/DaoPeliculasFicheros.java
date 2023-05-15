@@ -11,25 +11,31 @@ import java.util.logging.Logger;
 public class DaoPeliculasFicheros {
 
     public static void crearFicheroEmpleados() throws IOException {
-        File empleados = new File("ficheroEmp");
+        File empleados = new File("Descargas");
         if (!empleados.exists()) {
             empleados.createNewFile();
         }
     }
 
     public static void escribirFicheroEmpleados(List<Empleado> empleados) throws IOException {
-        crearFicheroEmpleados();
-        PrintWriter pw = new PrintWriter("ficheroEmp");
+        PrintWriter pw = new PrintWriter("empleados");
         for (Empleado empleado : empleados) {
             pw.println(empleado.toString());
         }
         pw.close();
     }
 
-    public static List<Empleado> cargarFicheroEmpleados(String fichero) throws IOException {
-        List<Empleado> auxiliar = null;
-        try (Scanner sc = new Scanner(new File("ficheroEmp"))) {
-            auxiliar = new LinkedList<>();
+    public void comprobacionFicheroEmpleados() throws IOException {
+        File empleados = new File("empleados");
+        if (!empleados.exists()) {
+            crearFicheroEmpleados();
+            escribirFicheroEmpleados(DaoBaseDeDatos.getListaEmpleados());
+        }
+    }
+
+    public static List<Empleado> cargarFicheroEmpleados() throws IOException {
+        List<Empleado> auxiliar = new LinkedList<>();
+        try (Scanner sc = new Scanner(new File("Descargas"))) {
             while (sc.hasNextLine()) {
                 String cadena = sc.nextLine();
                 String[] trozos = cadena.split(";");
@@ -57,6 +63,14 @@ public class DaoPeliculasFicheros {
             pw.println(escenario.toString());
         }
         pw.close();
+    }
+
+    public void comprobacionFicheroEscenarios() throws IOException {
+        File escenarios = new File("ficheroEsc");
+        if (!escenarios.exists()) {
+            crearFicheroEscenarios();
+            escribirFicheroEscenarios(DaoBaseDeDatos.getListaEscenarios());
+        }
     }
 
     public static Set<Escenario> cargarFicheroEscenarios() throws IOException {
@@ -96,14 +110,16 @@ public class DaoPeliculasFicheros {
         }
     }
 
-    public static void cargarFicheroBinarioPeliculas() {
-        Pelicula auxiliar = null;
+    public static Pelicula cargarFicheroBinarioPeliculas() {
+        Pelicula pelicula = null;
         try (ObjectInputStream is = new ObjectInputStream(new FileInputStream("ficheroPelis"))) {
-            auxiliar = (Pelicula) is.readObject();
+            pelicula = (Pelicula) is.readObject();
         } catch (IOException | ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(DaoPeliculasFicheros.class.getName()).log(java.util.logging.Level.SEVERE, ex.getMessage(), ex);
-
         }
+        return pelicula;
     }
+
+    //Pelicula peliculaCargada = cargarFicheroBinarioPeliculas();
 
 }

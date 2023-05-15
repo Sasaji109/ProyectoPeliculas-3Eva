@@ -32,10 +32,10 @@ public class DaoPeliculasImplementacion implements DaoPeliculas {
         return empleados.add(empleado);
     }
 
-    // Eliminar empleado, solamente dándole el id o NIF
     @Override
-    public void eliminarEmpleado(Empleado empleado) {
-        daoBaseDeDatos.getListaEmpleados().remove(empleado);
+    public void eliminarEmpleado(String NIF) {
+        List<Empleado> empleados = daoBaseDeDatos.getListaEmpleados();
+        empleados.removeIf(empleado -> empleado.getNIF().equals(NIF));
     }
 
     @Override
@@ -76,11 +76,6 @@ public class DaoPeliculasImplementacion implements DaoPeliculas {
     }
 
     @Override
-    public boolean actualizarIdioma(String nombre, int idioma) throws IdiomaException {
-        return false;
-    }
-
-    @Override
     public boolean isEmptyEscenariosSet() {
         return daoBaseDeDatos.getListaEscenarios().isEmpty();
     }
@@ -97,8 +92,9 @@ public class DaoPeliculasImplementacion implements DaoPeliculas {
     }
 
     @Override
-    public void eliminarEscenario(Escenario escenario) {
-        daoBaseDeDatos.getListaEscenarios().remove(escenario);
+    public void eliminarEscenario(int id) {
+        Set<Escenario> escenarios = daoBaseDeDatos.getListaEscenarios();
+        escenarios.removeIf(escenario -> escenario.getId() == id);
     }
 
     @Override

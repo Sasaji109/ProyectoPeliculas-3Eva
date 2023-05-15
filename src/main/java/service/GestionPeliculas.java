@@ -1,6 +1,5 @@
 package service;
 
-import common.IdiomaException;
 import dao.DaoPeliculas;
 import dao.DaoPeliculasFicheros;
 import domain.Empleado;
@@ -37,8 +36,8 @@ public class GestionPeliculas implements IGestionPeliculas {
     }
 
     @Override
-    public void eliminarEmpleado(Empleado empleado) {
-        daoPeliculas.eliminarEmpleado(empleado);
+    public void eliminarEmpleado(String NIF) {
+        daoPeliculas.eliminarEmpleado(NIF);
     }
 
     @Override
@@ -72,11 +71,6 @@ public class GestionPeliculas implements IGestionPeliculas {
     }
 
     @Override
-    public boolean actualizarIdioma(String nombre, int idioma) throws IdiomaException {
-        return daoPeliculas.actualizarIdioma(nombre, idioma);
-    }
-
-    @Override
     public boolean isEmptyEscenariosSet() {
         return daoPeliculas.isEmptyEscenariosSet();
     }
@@ -92,8 +86,8 @@ public class GestionPeliculas implements IGestionPeliculas {
     }
 
     @Override
-    public void eliminarEscenario(Escenario escenario) {
-        daoPeliculas.eliminarEscenario(escenario);
+    public void eliminarEscenario(int id) {
+        daoPeliculas.eliminarEscenario(id);
     }
 
     @Override
@@ -117,13 +111,23 @@ public class GestionPeliculas implements IGestionPeliculas {
     }
 
     @Override
-    public Set<Escenario> listarEscenario(String id, double alquiler) {
+    public Set<Escenario> listarEscenario(int id, double alquiler) {
         return daoPeliculas.listarEscenario(id, alquiler);
+    }
+
+    @Override
+    public void comprobacionFicheroEmpleados() throws IOException {
+        daoPeliculasFicheros.comprobacionFicheroEmpleados();
     }
 
     @Override
     public List<Empleado> cargarFicheroEmpleados() throws IOException {
         return daoPeliculasFicheros.cargarFicheroEmpleados();
+    }
+
+    @Override
+    public void comprobacionFicheroEscenarios() throws IOException {
+        daoPeliculasFicheros.comprobacionFicheroEscenarios();
     }
 
     @Override

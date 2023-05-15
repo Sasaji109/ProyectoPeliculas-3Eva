@@ -6,7 +6,8 @@ public class Constantes {
     public static final String GESTIONDATOS = "2. Gestionar los Datos";
     public static final String SALIR = "3. Salir de la Aplicación";
 
-    public static final String CONTRASENA = "Introduce la contraseña del administrador";
+    public static final String CORREO = "Introduce tu correo electrónico:";
+    public static final String CONTRASENA = "Introduce tu contraseña:";
     public static final String USUARIOINVALIDO = "Usuario introducido inválido";
 
     public static final String MENUPROGRAMA = "Introduce la opción que quieras: ";

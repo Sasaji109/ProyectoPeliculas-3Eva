@@ -11,7 +11,7 @@ public interface DaoPeliculas {
     boolean isEmptyEmpleadosList();
     List<Empleado> getListaEmpleado();
     boolean insertarEmpleado(Empleado empleado);
-    void eliminarEmpleado(Empleado empleado);
+    void eliminarEmpleado(String NIF);
     void modificarEmpleado(Empleado empleado);
     List<Empleado> listarEmpleado(String NIF);
     List<Empleado> listarEmpleado(String NIF, String trabajo);
@@ -19,12 +19,10 @@ public interface DaoPeliculas {
     List<Empleado> listarEmpleado(String NIF, double sueldo);
     List<Empleado> listarEmpleado(boolean trabajando);
 
-    boolean actualizarIdioma(String nombre, int idioma) throws IdiomaException;
-
     boolean isEmptyEscenariosSet();
     Set<Escenario> getListaEscenario();
     boolean insertarEscenario(Escenario escenario);
-    void eliminarEscenario(Escenario escenario);
+    void eliminarEscenario(int id);
     void modificarEscenario(Escenario escenario);
     Set<Escenario> listarEscenario(int id);
     Set<Escenario> listarEscenario(String lugar);

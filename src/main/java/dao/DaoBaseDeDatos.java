@@ -7,8 +7,8 @@ import java.util.Set;
 
 public class DaoBaseDeDatos {
 
-    private final List<Empleado> empleados;
-    private final Set<Escenario> escenarios;
+    private static List<Empleado> empleados;
+    private static Set<Escenario> escenarios;
 
 
     public DaoBaseDeDatos(List<Empleado> empleados, Set<Escenario> escenarios) {
@@ -110,10 +110,10 @@ public class DaoBaseDeDatos {
         escenarios.add(new Escenario(3910, "San Petersburgo", 2800.0, false));
     }
 
-    public List<Empleado> getListaEmpleados() {
+    public static List<Empleado> getListaEmpleados() {
         return empleados;
     }
-    public Set<Escenario> getListaEscenarios() {
+    public static Set<Escenario> getListaEscenarios() {
         return escenarios;
     }
 

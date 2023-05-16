@@ -2,11 +2,10 @@ package service;
 
 import dao.DaoPeliculas;
 import dao.DaoPeliculasFicheros;
+import dao.DaoPeliculasImplementacion;
 import domain.Empleado;
 import domain.Escenario;
 import domain.Pelicula;
-
-import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
@@ -15,9 +14,9 @@ public class GestionPeliculas implements IGestionPeliculas {
     private final DaoPeliculas daoPeliculas;
     private final DaoPeliculasFicheros daoPeliculasFicheros;
 
-    public GestionPeliculas(DaoPeliculas daoPeliculas, DaoPeliculasFicheros daoPeliculasFicheros) {
-        this.daoPeliculas = daoPeliculas;
-        this.daoPeliculasFicheros = daoPeliculasFicheros;
+    public GestionPeliculas() {
+        this.daoPeliculas = new DaoPeliculasImplementacion();
+        this.daoPeliculasFicheros = new DaoPeliculasFicheros();
     }
 
     @Override

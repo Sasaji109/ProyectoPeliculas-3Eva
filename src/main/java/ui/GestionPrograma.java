@@ -1,6 +1,7 @@
 package ui;
 
 import common.Constantes;
+import service.GestionPeliculas;
 import service.IGestionPeliculas;
 
 import java.util.Scanner;
@@ -9,8 +10,8 @@ public class GestionPrograma {
 
     private final IGestionPeliculas iGestionPeliculas;
 
-    public GestionPrograma(IGestionPeliculas iGestionPeliculas) {
-        this.iGestionPeliculas = iGestionPeliculas;
+    public GestionPrograma() {
+        this.iGestionPeliculas = new GestionPeliculas();
     }
 
     public void menuPrograma(){

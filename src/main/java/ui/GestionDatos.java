@@ -2,11 +2,15 @@ package ui;
 
 import common.Constantes;
 import domain.Empleado;
+import domain.Escenario;
+import service.GestionPeliculas;
 import service.IGestionPeliculas;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,8 +18,8 @@ public class GestionDatos {
 
     private final IGestionPeliculas iGestionPeliculas;
 
-    public GestionDatos(IGestionPeliculas iGestionPeliculas) {
-        this.iGestionPeliculas = iGestionPeliculas;
+    public GestionDatos() {
+        this.iGestionPeliculas = new GestionPeliculas();
     }
 
     private static final String password = "109";
@@ -58,11 +62,13 @@ public class GestionDatos {
 
     public void menuGestionar() {
         Scanner lector = new Scanner(System.in);
+
         iGestionPeliculas.crearFicheroEmpleados();
         iGestionPeliculas.crearFicheroEscenarios();
         iGestionPeliculas.crearFicheroBinarioPeliculas();
         iGestionPeliculas.escribirFicheroEmpleados();
         iGestionPeliculas.escribirFicheroEscenarios();
+
         int finBucle = 0;
         int opcion;
         do {

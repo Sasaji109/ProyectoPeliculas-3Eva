@@ -12,8 +12,8 @@ public class DaoPeliculasImplementacion implements DaoPeliculas {
 
     private final DaoBaseDeDatos daoBaseDeDatos;
 
-    public DaoPeliculasImplementacion(DaoBaseDeDatos daoBaseDeDatos) {
-        this.daoBaseDeDatos = daoBaseDeDatos;
+    public DaoPeliculasImplementacion() {
+        this.daoBaseDeDatos = new DaoBaseDeDatos();
     }
 
     @Override

@@ -2,12 +2,15 @@ import common.Constantes;
 import ui.GestionDatos;
 import ui.GestionPrograma;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
 
 public class Main {
     public static void main(String[] args) {
+        GestionDatos gestionDatos = new GestionDatos();
+        GestionPrograma gestionPrograma = new GestionPrograma();
         Scanner lector = new Scanner(System.in);
         int finBucle = 0;
         int opcion;
@@ -16,13 +19,13 @@ public class Main {
             opcion = lector.nextInt();
             switch (opcion) {
                 case 1:
-                    //GestionPrograma.menuPrograma();
+                    gestionPrograma.menuPrograma();
                     finBucle = 1;
                     break;
                 case 2:
                     boolean esValido = GestionDatos.validarUsuario();
                     if (esValido) {
-                        //GestionDatos.menuGestionar();
+                        gestionDatos.menuGestionar();
                         finBucle = 1;
                     } else {
                         System.out.println(Constantes.USUARIOINVALIDO+"\n");

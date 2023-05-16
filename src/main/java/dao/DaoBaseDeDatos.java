@@ -2,6 +2,9 @@ package dao;
 
 import domain.Empleado;
 import domain.Escenario;
+
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -11,9 +14,9 @@ public class DaoBaseDeDatos {
     private static Set<Escenario> escenarios;
 
 
-    public DaoBaseDeDatos(List<Empleado> empleados, Set<Escenario> escenarios) {
-        this.empleados = empleados;
-        this.escenarios = escenarios;
+    public DaoBaseDeDatos() {
+        this.empleados = new LinkedList<>();
+        this.escenarios = new HashSet<>();
 
         empleados.add(new Empleado("12345678A", "John Smith", 2000.0, "Actor", false));
         empleados.add(new Empleado("23456789B", "Jane Doe", 2500.0, "Director", false));

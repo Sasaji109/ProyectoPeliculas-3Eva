@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 public class DaoPeliculasFicheros {
 
-    public static void crearFicheroEmpleados() {
+    public void crearFicheroEmpleados() {
         File empleados = new File("src//empleados");
         if (!empleados.exists()) {
             try {
@@ -21,7 +21,7 @@ public class DaoPeliculasFicheros {
         }
     }
 
-    public static void escribirFicheroEmpleados() {
+    public void escribirFicheroEmpleados() {
         List<Empleado> empleados = DaoBaseDeDatos.getListaEmpleados();
         PrintWriter pw = null;
         try {
@@ -51,7 +51,7 @@ public class DaoPeliculasFicheros {
         return auxiliar;
     }
 
-    public static void crearFicheroEscenarios() {
+    public void crearFicheroEscenarios() {
         File escenarios = new File("src//escenarios");
         if (!escenarios.exists()) {
             try {
@@ -62,7 +62,7 @@ public class DaoPeliculasFicheros {
         }
     }
 
-    public static void escribirFicheroEscenarios() {
+    public void escribirFicheroEscenarios() {
         Set<Escenario> escenarios = DaoBaseDeDatos.getListaEscenarios();
         PrintWriter pw = null;
         try {
@@ -77,7 +77,7 @@ public class DaoPeliculasFicheros {
     }
 
     public static Set<Escenario> cargarFicheroEscenarios() {
-        Set<Escenario> auxiliar = new HashSet<>();;
+        Set<Escenario> auxiliar = new HashSet<>();
         try (Scanner sc = new Scanner(new File("src//escenarios"))) {
             while (sc.hasNextLine()) {
                 String cadena = sc.nextLine();

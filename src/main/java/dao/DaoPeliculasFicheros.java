@@ -21,8 +21,7 @@ public class DaoPeliculasFicheros {
         }
     }
 
-    public void escribirFicheroEmpleados() {
-        List<Empleado> empleados = DaoBaseDeDatos.getListaEmpleados();
+    public void escribirFicheroEmpleados( List<Empleado> empleados ) {
         PrintWriter pw = null;
         try {
             pw = new PrintWriter("src//empleados");
@@ -62,8 +61,8 @@ public class DaoPeliculasFicheros {
         }
     }
 
-    public void escribirFicheroEscenarios() {
-        Set<Escenario> escenarios = DaoBaseDeDatos.getListaEscenarios();
+    public void escribirFicheroEscenarios(Set<Escenario> escenarios) {
+
         PrintWriter pw = null;
         try {
             pw = new PrintWriter("src//escenarios");

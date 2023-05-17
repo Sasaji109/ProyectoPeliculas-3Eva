@@ -113,10 +113,10 @@ public class DaoBaseDeDatos {
         escenarios.add(new Escenario(3910, "San Petersburgo", 2800.0, false));
     }
 
-    public static List<Empleado> getListaEmpleados() {
+    public List<Empleado> getListaEmpleados() {
         return empleados;
     }
-    public static Set<Escenario> getListaEscenarios() {
+    public Set<Escenario> getListaEscenarios() {
         return escenarios;
     }
 

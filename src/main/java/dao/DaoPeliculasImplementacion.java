@@ -16,6 +16,10 @@ public class DaoPeliculasImplementacion implements DaoPeliculas {
         this.daoBaseDeDatos = new DaoBaseDeDatos();
     }
 
+    public DaoPeliculasImplementacion(DaoBaseDeDatos daoBaseDeDatos) {
+        this.daoBaseDeDatos = daoBaseDeDatos;
+    }
+
     @Override
     public boolean isEmptyEmpleadosList() {
         return daoBaseDeDatos.getListaEmpleados().isEmpty();
@@ -120,8 +124,7 @@ public class DaoPeliculasImplementacion implements DaoPeliculas {
     }
 
     @Override
-    public Set<Escenario> listarEscenario(int id, double alquiler) {
-        return daoBaseDeDatos.getListaEscenarios().stream().filter(escenario -> escenario.getId() == id
-        && escenario.getAlquiler() == alquiler).collect(Collectors.toSet());
+    public Set<Escenario> listarEscenario(boolean enUso) {
+        return daoBaseDeDatos.getListaEscenarios().stream().filter(escenario -> escenario.isEnUso() == enUso).collect(Collectors.toSet());
     }
 }

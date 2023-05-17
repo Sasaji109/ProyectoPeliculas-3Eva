@@ -27,5 +27,5 @@ public interface DaoPeliculas {
     Set<Escenario> listarEscenario(int id);
     Set<Escenario> listarEscenario(String lugar);
     Set<Escenario> listarEscenario(double alquiler);
-    Set<Escenario> listarEscenario(int id, double alquiler);
+    Set<Escenario> listarEscenario(boolean enUso);
 }

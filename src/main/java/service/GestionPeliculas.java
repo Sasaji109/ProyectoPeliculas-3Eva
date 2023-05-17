@@ -115,8 +115,8 @@ public class GestionPeliculas implements IGestionPeliculas {
     }
 
     @Override
-    public Set<Escenario> listarEscenario(int id, double alquiler) {
-        return daoPeliculas.listarEscenario(id, alquiler);
+    public Set<Escenario> listarEscenario(boolean enUso) {
+        return daoPeliculas.listarEscenario(enUso);
     }
 
     @Override
@@ -128,7 +128,7 @@ public class GestionPeliculas implements IGestionPeliculas {
     @Override
     public void escribirFicheroEmpleados() {
         List<Empleado> empleados = daoPeliculas.getListaEmpleado();
-        daoPeliculasFicheros.escribirFicheroEmpleados();
+        daoPeliculasFicheros.escribirFicheroEmpleados(empleados);
     }
 
     @Override
@@ -144,7 +144,7 @@ public class GestionPeliculas implements IGestionPeliculas {
     @Override
     public void escribirFicheroEscenarios() {
         Set<Escenario> escenarios = daoPeliculas.getListaEscenario();
-        daoPeliculasFicheros.escribirFicheroEscenarios();
+        daoPeliculasFicheros.escribirFicheroEscenarios(escenarios);
     }
 
     @Override

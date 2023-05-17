@@ -8,8 +8,7 @@ import domain.Guion;
 import service.GestionPeliculas;
 import service.IGestionPeliculas;
 
-import java.io.File;
-import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
@@ -53,20 +52,29 @@ public class GestionDatos {
 
     public void menuGestionar() {
         Scanner lector = new Scanner(System.in);
-
-        Guion guion = new Guion(100, new Empleado("12345678A", "Escritor1", 5000.0, "Escritor", false), Idioma.ingles);
-        Guion.imprimirGuion(guion);
+        int finBucle = 0;
+        int opcion;
 
         iGestionPeliculas.crearFicheroEmpleados();
         iGestionPeliculas.crearFicheroEscenarios();
         iGestionPeliculas.escribirFicheroEmpleados();
         iGestionPeliculas.escribirFicheroEscenarios();
 
-        int finBucle = 0;
-        int opcion;
+        //Guion guion = new Guion(100, new Empleado("12345678A", "Escritor1", 5000.0, "Escritor", false), Idioma.ingles);
+        //Guion.imprimirGuion(guion);
+
+        //List<Empleado> empleados = iGestionPeliculas.cargarFicheroEmpleados();
+        //Set<Escenario> escenarios = iGestionPeliculas.cargarFicheroEscenarios();
+
         do {
             System.out.println(Constantes.MENUGESTIONAR+"\n"+Constantes.OPCION1D+"\n"+Constantes.OPCION2D+"\n"+Constantes.SALIR);
-            opcion = lector.nextInt();
+            try {
+                opcion = lector.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Las letras no están permitidas, introduce un número");
+                lector.next();
+                continue;
+            }
             switch (opcion) {
                 case 1:
                     opcion1D();
@@ -99,7 +107,13 @@ public class GestionDatos {
         int opcion;
         do {
             System.out.println(Constantes.MENUOPCION1D+"\n"+Constantes.OPCION1D1+"\n"+Constantes.OPCION1D2+"\n"+Constantes.OPCION1D3+"\n"+Constantes.OPCION1D4+"\n"+Constantes.OPCION1D5+"\n"+Constantes.SALIR);
-            opcion = lector.nextInt();
+            try {
+                opcion = lector.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Las letras no están permitidas, introduce un número");
+                lector.next();
+                continue;
+            }
             switch (opcion) {
                 case 1:
                     finBucle = 1;
@@ -132,7 +146,13 @@ public class GestionDatos {
         int opcion;
         do {
             System.out.println(Constantes.MENUOPCION2D+"\n"+Constantes.OPCION2D1+"\n"+Constantes.OPCION2D2+"\n"+Constantes.OPCION2D3+"\n"+Constantes.OPCION2D4+"\n"+Constantes.OPCION2D5+"\n"+Constantes.SALIR);
-            opcion = lector.nextInt();
+            try {
+                opcion = lector.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Las letras no están permitidas, introduce un número");
+                lector.next();
+                continue;
+            }
             switch (opcion) {
                 case 1:
                     finBucle = 1;

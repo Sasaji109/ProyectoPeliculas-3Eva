@@ -17,4 +17,9 @@ public class Empleado {
         this.trabajo = trabajo;
         this.trabajando = trabajando;
     }
+
+    @Override
+    public String toString() {
+        return NIF + ";" + nombre + ";" + salario + ";" + trabajo + ";" + trabajando;
+    }
 }

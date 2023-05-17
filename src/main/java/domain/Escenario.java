@@ -16,4 +16,9 @@ public class Escenario {
         this.alquiler = alquiler;
         this.enUso = enUso;
     }
+
+    @Override
+    public String toString() {
+        return id + ";" + alquiler + ";" + lugar + ";" + enUso;
+    }
 }

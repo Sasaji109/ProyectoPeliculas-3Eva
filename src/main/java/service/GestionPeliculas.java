@@ -19,6 +19,11 @@ public class GestionPeliculas implements IGestionPeliculas {
         this.daoPeliculasFicheros = new DaoPeliculasFicheros();
     }
 
+    public GestionPeliculas(DaoPeliculas daoPeliculas, DaoPeliculasFicheros daoPeliculasFicheros) {
+        this.daoPeliculas = daoPeliculas;
+        this.daoPeliculasFicheros = daoPeliculasFicheros;
+    }
+
     @Override
     public boolean isEmptyEmpleadosList() {
         return daoPeliculas.isEmptyEmpleadosList();

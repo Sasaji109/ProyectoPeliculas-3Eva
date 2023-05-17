@@ -39,7 +39,7 @@ public class Guion {
         }
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        try (FileWriter writer = new FileWriter("data/guion.json")) {
+        try (FileWriter writer = new FileWriter("src//guion.json")) {
             gson.toJson(guion, writer);
         } catch (IOException e) {
             e.printStackTrace();

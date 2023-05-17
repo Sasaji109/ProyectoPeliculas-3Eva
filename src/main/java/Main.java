@@ -4,6 +4,7 @@ import ui.GestionPrograma;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -16,7 +17,13 @@ public class Main {
         int opcion;
         do {
             System.out.println(Constantes.MENUPRINCIPAL+"\n"+Constantes.GESTIONPROGRAMA+"\n"+Constantes.GESTIONDATOS+"\n"+Constantes.SALIR);
-            opcion = lector.nextInt();
+            try {
+                opcion = lector.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Las letras no están permitidas, introduce un número");
+                lector.next();
+                continue;
+            }
             switch (opcion) {
                 case 1:
                     gestionPrograma.menuPrograma();

@@ -4,6 +4,7 @@ import common.Constantes;
 import service.GestionPeliculas;
 import service.IGestionPeliculas;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GestionPrograma {
@@ -20,7 +21,13 @@ public class GestionPrograma {
         int opcion;
         do {
             System.out.println(Constantes.MENUPROGRAMA+"\n"+Constantes.OPCION1P+"\n"+Constantes.OPCION2P+"\n"+Constantes.SALIR);
-            opcion = lector.nextInt();
+            try {
+                opcion = lector.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Las letras no están permitidas, introduce un número");
+                lector.next();
+                continue;
+            }
             switch (opcion) {
                 case 1:
 

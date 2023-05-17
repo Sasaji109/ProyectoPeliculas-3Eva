@@ -1,8 +1,10 @@
 package ui;
 
 import common.Constantes;
+import common.Idioma;
 import domain.Empleado;
 import domain.Escenario;
+import domain.Guion;
 import service.GestionPeliculas;
 import service.IGestionPeliculas;
 
@@ -42,17 +44,6 @@ public class GestionDatos {
         }
     }
 
-    public static final String MENUGESTIONAR = "Introduce la opción que quieras: ";
-    public static final String OPCION1D = "1. Gestionar lista de Empleados";
-    public static final String OPCION2D = "2. Gestionar lista de Escenarios";
-
-    public static final String MENUOPCION1D ="¿Qué deseas hacer con la lista de Empleados?";
-    public static final String OPCION1D1 = "1. Listar Empleados";
-    public static final String OPCION1D2 = "2. Insertar un nuevo Empleado";
-    public static final String OPCION1D3 = "3. Modificar un Empleado";
-    public static final String OPCION1D4 = "4. Eliminar un Empleado";
-    public static final String OPCION1D5 = "5. Eliminar la lista de Empleados";
-
     public static final String MENUOPCION2D = "¿Qué deseas hacer con la lista de Escenarios?";
     public static final String OPCION2D1 = "1. Listar Escenarios";
     public static final String OPCION2D2 = "2. Insertar un nuevo Escenario";
@@ -63,9 +54,11 @@ public class GestionDatos {
     public void menuGestionar() {
         Scanner lector = new Scanner(System.in);
 
+        Guion guion = new Guion(100, new Empleado("12345678A", "Escritor1", 5000.0, "Escritor", false), Idioma.ingles);
+        Guion.imprimirGuion(guion);
+
         iGestionPeliculas.crearFicheroEmpleados();
         iGestionPeliculas.crearFicheroEscenarios();
-        iGestionPeliculas.crearFicheroBinarioPeliculas();
         iGestionPeliculas.escribirFicheroEmpleados();
         iGestionPeliculas.escribirFicheroEscenarios();
 
@@ -92,6 +85,13 @@ public class GestionDatos {
             }
         } while (finBucle!=1);
     }
+
+    public static final String MENUOPCION1D ="¿Qué deseas hacer con la lista de Empleados?";
+    public static final String OPCION1D1 = "1. Listar Empleados";
+    public static final String OPCION1D2 = "2. Insertar un nuevo Empleado";
+    public static final String OPCION1D3 = "3. Modificar un Empleado";
+    public static final String OPCION1D4 = "4. Eliminar un Empleado";
+    public static final String OPCION1D5 = "5. Eliminar la lista de Empleados";
 
     public void opcion1D() {
         Scanner lector = new Scanner(System.in);

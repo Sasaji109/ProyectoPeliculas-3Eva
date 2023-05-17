@@ -100,17 +100,8 @@ public class DaoPeliculasImplementacion implements DaoPeliculas {
     @Override
     public void modificarEscenario(Escenario escenario) {
         Set<Escenario> escenarios = daoBaseDeDatos.getListaEscenarios();
-        Escenario escenarioOriginal = null;
-        for (Escenario esc : escenarios) {
-            if (esc.getId() == escenario.getId()) {
-                escenarioOriginal = esc;
-                break;
-            }
-        }
-        if (escenarioOriginal != null) {
-            escenarios.remove(escenarioOriginal);
-            escenarios.add(escenario);
-        }
+        escenarios.removeIf(esc -> esc.getId() == escenario.getId());
+        escenarios.add(escenario);
     }
 
     @Override

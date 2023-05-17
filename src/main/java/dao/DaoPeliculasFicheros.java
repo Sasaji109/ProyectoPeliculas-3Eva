@@ -102,7 +102,7 @@ public class DaoPeliculasFicheros {
         }
     }
 
-    public static void escribirFicheroBinarioPeliculas(Pelicula pelicula) {
+    public void escribirFicheroBinarioPeliculas(Pelicula pelicula) {
         try (ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("src//ficheroPelis"))) {
             os.writeObject(pelicula);
         } catch (IOException ex) {
@@ -110,17 +110,13 @@ public class DaoPeliculasFicheros {
         }
     }
 
-    public static Pelicula cargarFicheroBinarioPeliculas() {
+    public Pelicula cargarFicheroBinarioPeliculas() {
         try (ObjectInputStream is = new ObjectInputStream(new FileInputStream("src//ficheroPelis"))) {
             return (Pelicula) is.readObject();
         } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(DaoPeliculasFicheros.class.getName()).log(java.util.logging.Level.SEVERE, ex.getMessage(), ex);
         }
-
         return null;
     }
-
-
-    //Pelicula peliculaCargada = cargarFicheroBinarioPeliculas();
 
 }

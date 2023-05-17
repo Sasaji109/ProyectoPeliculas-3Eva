@@ -12,7 +12,6 @@ public class Pelicula {
     private double presupuesto;
     private List<Empleado> empleadosPelicula;
     private Set<Escenario> escenariosPelicula;
-    //private Map<String, Double> costes; // Método en vez de atributo
 
     public Pelicula(String nombre, Guion guion, double presupuesto, List<Empleado> empleadosPelicula, Set<Escenario> escenariosPelicula) {
         this.nombre = nombre;

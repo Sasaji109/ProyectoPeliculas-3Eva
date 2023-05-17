@@ -1,11 +1,9 @@
 package service;
 
-import common.IdiomaException;
 import domain.Empleado;
 import domain.Escenario;
 import domain.Pelicula;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
@@ -44,6 +42,6 @@ public interface IGestionPeliculas {
 
     void crearFicheroBinarioPeliculas();
     void escribirFicheroBinarioPeliculas(Pelicula pelicula);
-    void cargarFicheroBinarioPeliculas();
+    Pelicula cargarFicheroBinarioPeliculas();
 }
 

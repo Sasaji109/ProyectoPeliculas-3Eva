@@ -173,8 +173,8 @@ public class GestionPeliculas implements IGestionPeliculas {
     }
 
     @Override
-    public void cargarFicheroBinarioPeliculas() {
-        daoPeliculasFicheros.cargarFicheroBinarioPeliculas();
+    public Pelicula cargarFicheroBinarioPeliculas() {
+        return daoPeliculasFicheros.cargarFicheroBinarioPeliculas();
     }
 
 }

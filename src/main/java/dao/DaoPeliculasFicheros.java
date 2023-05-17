@@ -21,7 +21,7 @@ public class DaoPeliculasFicheros {
         }
     }
 
-    public void escribirFicheroEmpleados( List<Empleado> empleados ) {
+    public void escribirFicheroEmpleados( List<Empleado> empleados) {
         PrintWriter pw = null;
         try {
             pw = new PrintWriter("src//empleados");

@@ -10,8 +10,8 @@ import java.util.Set;
 
 public class DaoBaseDeDatos {
 
-    private static List<Empleado> empleados;
-    private static Set<Escenario> escenarios;
+    private List<Empleado> empleados;
+    private Set<Escenario> escenarios;
 
 
     public DaoBaseDeDatos() {

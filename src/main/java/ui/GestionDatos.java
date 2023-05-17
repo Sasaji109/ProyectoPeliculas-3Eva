@@ -1,10 +1,8 @@
 package ui;
 
 import common.Constantes;
-import common.Idioma;
 import domain.Empleado;
 import domain.Escenario;
-import domain.Guion;
 import service.GestionPeliculas;
 import service.IGestionPeliculas;
 import java.util.InputMismatchException;
@@ -41,13 +39,6 @@ public class GestionDatos {
             return false;
         }
     }
-
-    public static final String MENUOPCION2D = "¿Qué deseas hacer con la lista de Escenarios?";
-    public static final String OPCION2D1 = "1. Listar Escenarios";
-    public static final String OPCION2D2 = "2. Insertar un nuevo Escenario";
-    public static final String OPCION2D3 = "3. Modificar un Escenario";
-    public static final String OPCION2D4 = "4. Eliminar un Escenario";
-    public static final String OPCION2D5 = "5. Eliminar la lista de Escenarios";
 
     public void menuGestionar() {
         Scanner lector = new Scanner(System.in);
@@ -93,6 +84,12 @@ public class GestionDatos {
     public void opcion1D() {
         Scanner lector = new Scanner(System.in);
         List<Empleado> empleados = iGestionPeliculas.cargarFicheroEmpleados();
+        Empleado empleado = null;
+        String NIF;
+        String nombre;
+        double salario;
+        String trabajo;
+        boolean trabajando;
         int finBucle = 0;
         int opcion;
         do {
@@ -110,23 +107,52 @@ public class GestionDatos {
                     finBucle = 1;
                     break;
                 case 2:
-                    Empleado empleado = null;
+                    System.out.print("Introduce el NIF del empleado: ");
+                    NIF = lector.nextLine();
+                    lector.nextLine();
+                    System.out.print("Introduce el nombre del empleado: ");
+                    nombre = lector.nextLine();
+                    lector.nextLine();
+                    System.out.print("Introduce el salario del empleado: ");
+                    salario = lector.nextDouble();
+                    System.out.print("Introduce el trabajo del empleado: ");
+                    trabajo = lector.nextLine();
+                    lector.nextLine();
+                    System.out.print("Indica si el empleado está trabajando (true/false): ");
+                    trabajando = lector.nextBoolean();
+                    lector.nextLine();
+                    empleado = new Empleado(NIF, nombre, salario, trabajo, trabajando);
                     iGestionPeliculas.insertarEmpleado(empleado);
                     finBucle = 1;
                     break;
                 case 3:
-                    //Empleado empleado = null;
-                    //iGestionPeliculas.modificarEmpleado(empleado);
+                    System.out.print("Introduce el NIF del empleado: ");
+                    NIF = lector.nextLine();
+                    lector.nextLine();
+                    System.out.print("Introduce el nombre del empleado: ");
+                    nombre = lector.nextLine();
+                    lector.nextLine();
+                    System.out.print("Introduce el salario del empleado: ");
+                    salario = lector.nextDouble();
+                    System.out.print("Introduce el trabajo del empleado: ");
+                    trabajo = lector.nextLine();
+                    lector.nextLine();
+                    System.out.print("Indica si el empleado está trabajando (true/false): ");
+                    trabajando = lector.nextBoolean();
+                    lector.nextLine();
+                    empleado = new Empleado(NIF, nombre, salario, trabajo, trabajando);
+                    iGestionPeliculas.modificarEmpleado(empleado);
                     finBucle = 1;
                     break;
                 case 4:
                     System.out.println("Introduce el NIF");
-                    String NIF = lector.nextLine();
+                    NIF = lector.nextLine();
+                    lector.nextLine();
                     iGestionPeliculas.eliminarEmpleado(NIF);
                     finBucle = 1;
                     break;
                 case 5:
-
+                    iGestionPeliculas.eliminarListaEmpleados(empleados);
                     finBucle = 1;
                     break;
                 case 6:
@@ -161,36 +187,40 @@ public class GestionDatos {
                 case 1:
                     System.out.println("Introduce el NIF");
                     NIF = lector.nextLine();
-                    iGestionPeliculas.listarEmpleado(NIF);
+                    lector.nextLine();
+                    System.out.println(iGestionPeliculas.listarEmpleado(NIF));
                     finBucle = 1;
                     break;
                 case 2:
                     System.out.println("Introduce el NIF");
                     NIF = lector.nextLine();
+                    lector.nextLine();
                     System.out.println("Introduce el trabajo");
                     trabajo = lector.nextLine();
-                    iGestionPeliculas.listarEmpleado(NIF,trabajo);
+                    System.out.println(iGestionPeliculas.listarEmpleado(NIF,trabajo));
                     finBucle = 1;
                     break;
                 case 3:
                     System.out.println("Introduce el sueldo");
                     sueldo = lector.nextDouble();
-                    iGestionPeliculas.listarEmpleado(sueldo);
+                    System.out.println(iGestionPeliculas.listarEmpleado(sueldo));
                     finBucle = 1;
                     break;
                 case 4:
                     System.out.println("Introduce el NIF");
                     NIF = lector.nextLine();
+                    lector.nextLine();
                     System.out.println("Introduce el sueldo");
                     sueldo = lector.nextDouble();
-                    iGestionPeliculas.listarEmpleado(NIF, sueldo);
+                    lector.nextLine();
+                    System.out.println(iGestionPeliculas.listarEmpleado(NIF, sueldo));
                     finBucle = 1;
                     break;
                 case 5:
                     System.out.println("¿Deseas listar los empleados que están trabajando? (true/false)");
                     trabajando = lector.nextBoolean();
                     lector.nextLine();
-                    iGestionPeliculas.listarEmpleado(trabajando);
+                    System.out.println(iGestionPeliculas.listarEmpleado(trabajando));
                     finBucle = 1;
                     break;
                 case 6:
@@ -205,6 +235,12 @@ public class GestionDatos {
 
     public void opcion2D() {
         Scanner lector = new Scanner(System.in);
+        Set<Escenario> escenarios = iGestionPeliculas.cargarFicheroEscenarios();
+        Escenario escenario = null;
+        int id;
+        String lugar;
+        double alquiler;
+        boolean enUso;
         int finBucle = 0;
         int opcion;
         do {
@@ -222,21 +258,43 @@ public class GestionDatos {
                     finBucle = 1;
                     break;
                 case 2:
-                    //iGestionPeliculas.insertarEscenario();
+                    System.out.print("Introduce el id del escenario: ");
+                    id = lector.nextInt();
+                    System.out.print("Introduce el lugar del escenario: ");
+                    lugar = lector.nextLine();
+                    lector.nextLine();
+                    System.out.print("Introduce el alquiler del escenario: ");
+                    alquiler = lector.nextDouble();
+                    System.out.print("Indica si el escenario está en uso (true/false): ");
+                    enUso = lector.nextBoolean();
+                    lector.nextLine();
+                    escenario = new Escenario(id, lugar, alquiler, enUso);
+                    iGestionPeliculas.insertarEscenario(escenario);
                     finBucle = 1;
                     break;
                 case 3:
-                    //iGestionPeliculas.modificarEscenario();
+                    System.out.print("Introduce el id del escenario: ");
+                    id = lector.nextInt();
+                    System.out.print("Introduce el lugar del escenario: ");
+                    lugar = lector.nextLine();
+                    lector.nextLine();
+                    System.out.print("Introduce el alquiler del escenario: ");
+                    alquiler = lector.nextDouble();
+                    System.out.print("Indica si el escenario está en uso (true/false): ");
+                    enUso = lector.nextBoolean();
+                    lector.nextLine();
+                    escenario = new Escenario(id, lugar, alquiler, enUso);
+                    iGestionPeliculas.modificarEscenario(escenario);
                     finBucle = 1;
                     break;
                 case 4:
                     System.out.println("Introduce el id");
-                    int id = lector.nextInt();
+                    id = lector.nextInt();
                     iGestionPeliculas.eliminarEscenario(id);
                     finBucle = 1;
                     break;
                 case 5:
-
+                    iGestionPeliculas.eliminarListaEscenarios(escenarios);
                     finBucle = 1;
                     break;
                 case 6:
@@ -270,26 +328,27 @@ public class GestionDatos {
                 case 1:
                     System.out.println("Introduce el id");
                     id = lector.nextInt();
-                    iGestionPeliculas.listarEscenario(id);
+                    System.out.println(iGestionPeliculas.listarEscenario(id));
                     finBucle = 1;
                     break;
                 case 2:
                     System.out.println("Introduce el lugar");
                     lugar = lector.nextLine();
-                    iGestionPeliculas.listarEscenario(lugar);
+                    lector.nextLine();
+                    System.out.println(iGestionPeliculas.listarEscenario(lugar));
                     finBucle = 1;
                     break;
                 case 3:
                     System.out.println("Introduce el alquiler");
                     alquiler = lector.nextDouble();
-                    iGestionPeliculas.listarEscenario(alquiler);
+                    System.out.println(iGestionPeliculas.listarEscenario(alquiler));
                     finBucle = 1;
                     break;
                 case 4:
                     System.out.println("¿Deseas listar los empleados que están trabajando? (true/false)");
                     enUso = lector.nextBoolean();
                     lector.nextLine();
-                    iGestionPeliculas.listarEscenario(enUso);
+                    System.out.println(iGestionPeliculas.listarEscenario(enUso));
                     finBucle = 1;
                     break;
                 case 5:

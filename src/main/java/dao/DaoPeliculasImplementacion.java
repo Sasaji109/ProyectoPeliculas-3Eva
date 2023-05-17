@@ -52,6 +52,11 @@ public class DaoPeliculasImplementacion implements DaoPeliculas {
     }
 
     @Override
+    public void eliminarListaEmpleados(List<Empleado> empleados) {
+        empleados.clear();
+    }
+
+    @Override
     public List<Empleado> listarEmpleado(String NIF) {
         return daoBaseDeDatos.getListaEmpleados().stream().filter(empleado -> empleado.getNIF().equals(NIF)).collect(Collectors.toList());
     }
@@ -106,6 +111,11 @@ public class DaoPeliculasImplementacion implements DaoPeliculas {
         Set<Escenario> escenarios = daoBaseDeDatos.getListaEscenarios();
         escenarios.removeIf(esc -> esc.getId() == escenario.getId());
         escenarios.add(escenario);
+    }
+
+    @Override
+    public void eliminarListaEscenarios(Set<Escenario> escenarios) {
+        escenarios.clear();
     }
 
     @Override

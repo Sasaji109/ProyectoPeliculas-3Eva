@@ -45,7 +45,7 @@ public class Constantes {
     public static final String OPCIONLESC1 = "1. Listar por id";
     public static final String OPCIONLESC2 = "2. Listar por lugar";
     public static final String OPCIONLESC3 = "3. Listar por alquiler";
-    public static final String OPCIONLESC4 = "4. Listar por id y alquiler";
+    public static final String OPCIONLESC4 = "4. Listar por en uso o no en uso";
 
     public static final String OPCIONINCORRECTA = "Opción incorrecta, vuelve a introducirla";
     public static final String MANTENIMIENTO = "Esta función está en mantenimiento en estos momentos";

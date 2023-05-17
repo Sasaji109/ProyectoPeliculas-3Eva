@@ -50,6 +50,11 @@ public class GestionPeliculas implements IGestionPeliculas {
     }
 
     @Override
+    public void eliminarListaEmpleados(List<Empleado> empleados) {
+        daoPeliculas.eliminarListaEmpleados(empleados);
+    }
+
+    @Override
     public List<Empleado> listarEmpleado(String NIF) {
         return daoPeliculas.listarEmpleado(NIF);
     }
@@ -97,6 +102,11 @@ public class GestionPeliculas implements IGestionPeliculas {
     @Override
     public void modificarEscenario(Escenario escenario) {
         daoPeliculas.modificarEscenario(escenario);
+    }
+
+    @Override
+    public void eliminarListaEscenarios(Set<Escenario> escenarios) {
+        daoPeliculas.eliminarListaEscenarios(escenarios);
     }
 
     @Override

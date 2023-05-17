@@ -13,6 +13,7 @@ public interface DaoPeliculas {
     boolean insertarEmpleado(Empleado empleado);
     void eliminarEmpleado(String NIF);
     void modificarEmpleado(Empleado empleado);
+    void eliminarListaEmpleados(List <Empleado> empleados);
     List<Empleado> listarEmpleado(String NIF);
     List<Empleado> listarEmpleado(String NIF, String trabajo);
     List<Empleado> listarEmpleado(double sueldo);
@@ -24,6 +25,7 @@ public interface DaoPeliculas {
     boolean insertarEscenario(Escenario escenario);
     void eliminarEscenario(int id);
     void modificarEscenario(Escenario escenario);
+    void eliminarListaEscenarios(Set <Escenario> escenarios);
     Set<Escenario> listarEscenario(int id);
     Set<Escenario> listarEscenario(String lugar);
     Set<Escenario> listarEscenario(double alquiler);

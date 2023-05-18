@@ -29,10 +29,9 @@ public class Constantes {
 
     public static final String MENULISTAREMPLEADOS ="¿De qué forma deseas listar los empleados?";
     public static final String OPCIONLEMP1 = "1. Listar por NIF";
-    public static final String OPCIONLEMP2 = "2. Listar por NIF y trabajo";
-    public static final String OPCIONLEMP3 = "3. Listar por sueldo";
-    public static final String OPCIONLEMP4 = "4. Listar por NIF y sueldo";
-    public static final String OPCIONLEMP5 = "5. Listar por trabajando o no trabajando";
+    public static final String OPCIONLEMP2 = "2. Listar por sueldo";
+    public static final String OPCIONLEMP3 = "3. Listar por NIF y sueldo";
+    public static final String OPCIONLEMP4 = "4. Listar por trabajando o no trabajando";
 
     public static final String MENUOPCION2D = "¿Qué deseas hacer con la lista de Escenarios?";
     public static final String OPCION2D1 = "1. Listar Escenarios";

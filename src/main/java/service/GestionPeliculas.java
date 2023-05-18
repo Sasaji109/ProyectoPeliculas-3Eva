@@ -60,13 +60,8 @@ public class GestionPeliculas implements IGestionPeliculas {
     }
 
     @Override
-    public List<Empleado> listarEmpleado(String NIF, String trabajo) {
-        return daoPeliculas.listarEmpleado(NIF,trabajo);
-    }
-
-    @Override
-    public List<Empleado> listarEmpleado(double sueldo) {
-        return daoPeliculas.listarEmpleado(sueldo);
+    public List<Empleado> listarEmpleado(double sueldo1, double sueldo2) {
+        return daoPeliculas.listarEmpleado(sueldo1, sueldo2);
     }
 
     @Override
@@ -120,8 +115,8 @@ public class GestionPeliculas implements IGestionPeliculas {
     }
 
     @Override
-    public Set<Escenario> listarEscenario(double alquiler) {
-        return daoPeliculas.listarEscenario(alquiler);
+    public Set<Escenario> listarEscenario(double alquiler1, double alquiler2) {
+        return daoPeliculas.listarEscenario(alquiler1, alquiler2);
     }
 
     @Override

@@ -13,8 +13,7 @@ public class Main {
         GestionDatos gestionDatos = new GestionDatos();
         GestionPrograma gestionPrograma = new GestionPrograma();
         Scanner lector = new Scanner(System.in);
-        int finBucle = 0;
-        int opcion;
+        int opcion = 0;
         do {
             System.out.println(Constantes.MENUPRINCIPAL+"\n"+Constantes.GESTIONPROGRAMA+"\n"+Constantes.GESTIONDATOS+"\n"+Constantes.SALIR);
             try {
@@ -27,25 +26,20 @@ public class Main {
             switch (opcion) {
                 case 1:
                     gestionPrograma.menuPrograma();
-                    finBucle = 1;
                     break;
                 case 2:
                     boolean esValido = GestionDatos.validarUsuario();
                     if (esValido) {
                         gestionDatos.menuGestionar();
-                        finBucle = 1;
                     } else {
                         System.out.println(Constantes.USUARIOINVALIDO+"\n");
                     }
-                    break;
-                case 3:
-                    finBucle = 1;
                     break;
                 default:
                     System.out.println(Constantes.OPCIONINCORRECTA);
                     break;
             }
-        } while (finBucle!=1);
+        } while (opcion!=3);
     }
 
 }

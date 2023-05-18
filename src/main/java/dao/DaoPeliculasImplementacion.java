@@ -62,16 +62,9 @@ public class DaoPeliculasImplementacion implements DaoPeliculas {
     }
 
     @Override
-    public List<Empleado> listarEmpleado(String NIF, String trabajo) {
-        return daoBaseDeDatos.getListaEmpleados().stream().filter(empleado -> empleado.getNIF().equals(NIF)
-                && empleado.getTrabajo().equals(trabajo)).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Empleado> listarEmpleado(double sueldo) {
-        return daoBaseDeDatos.getListaEmpleados().stream().filter(empleado -> empleado.getSalario() == sueldo).collect(Collectors.toList());
-
-    }
+    public List<Empleado> listarEmpleado(double sueldo1, double sueldo2) {
+        return daoBaseDeDatos.getListaEmpleados().stream().filter(empleado -> empleado.getSalario() > sueldo1
+                        && empleado.getSalario() < sueldo2).collect(Collectors.toList());}
 
     @Override
     public List<Empleado> listarEmpleado(String NIF, double sueldo) {
@@ -129,8 +122,9 @@ public class DaoPeliculasImplementacion implements DaoPeliculas {
     }
 
     @Override
-    public Set<Escenario> listarEscenario(double alquiler) {
-        return daoBaseDeDatos.getListaEscenarios().stream().filter(escenario -> escenario.getAlquiler() == alquiler).collect(Collectors.toSet());
+    public Set<Escenario> listarEscenario(double alquiler1, double alquiler2) {
+        return daoBaseDeDatos.getListaEscenarios().stream().filter(escenario -> escenario.getAlquiler() > alquiler1
+                && escenario.getAlquiler() < alquiler2).collect(Collectors.toSet());
     }
 
     @Override

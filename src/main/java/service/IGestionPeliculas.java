@@ -5,6 +5,7 @@ import domain.Escenario;
 import domain.Pelicula;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public interface IGestionPeliculas {
@@ -19,6 +20,7 @@ public interface IGestionPeliculas {
     List<Empleado> listarEmpleado(double sueldo1, double sueldo2);
     List<Empleado> listarEmpleadoSUELDONIF(boolean orden);
     List<Empleado> listarEmpleado(boolean trabajando);
+    Map<String, List<Empleado>> dividirEmpleado(List<Empleado> empleados);
 
     boolean isEmptyEscenariosSet();
     Set<Escenario> getListaEscenario();
@@ -27,7 +29,7 @@ public interface IGestionPeliculas {
     void modificarEscenario(Escenario escenario);
     void eliminarListaEscenarios(Set <Escenario> escenarios);
     Set<Escenario> listarEscenario(int id);
-    Set<Escenario> listarEscenario(String lugar);
+    Set<Escenario> listarEscenarioLUGAR(boolean orden);
     Set<Escenario> listarEscenario(double alquiler1, double alquiler2);
     Set<Escenario> listarEscenario(boolean enUso);
 

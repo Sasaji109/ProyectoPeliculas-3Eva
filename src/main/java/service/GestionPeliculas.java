@@ -7,6 +7,7 @@ import domain.Empleado;
 import domain.Escenario;
 import domain.Pelicula;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class GestionPeliculas implements IGestionPeliculas {
@@ -75,6 +76,11 @@ public class GestionPeliculas implements IGestionPeliculas {
     }
 
     @Override
+    public Map<String, List<Empleado>> dividirEmpleado(List<Empleado> empleados) {
+        return daoPeliculas.dividirEmpleado(empleados);
+    }
+
+    @Override
     public boolean isEmptyEscenariosSet() {
         return daoPeliculas.isEmptyEscenariosSet();
     }
@@ -110,8 +116,8 @@ public class GestionPeliculas implements IGestionPeliculas {
     }
 
     @Override
-    public Set<Escenario> listarEscenario(String lugar) {
-        return daoPeliculas.listarEscenario(lugar);
+    public Set<Escenario> listarEscenarioLUGAR(boolean orden) {
+        return daoPeliculas.listarEscenarioLUGAR(orden);
     }
 
     @Override

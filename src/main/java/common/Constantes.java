@@ -33,6 +33,7 @@ public class Constantes {
     public static final String OPCIONLEMP2 = "2. Listar por sueldo dentro de un rango";
     public static final String OPCIONLEMP3 = "3. Listar por sueldo y NIF";
     public static final String OPCIONLEMP4 = "4. Listar por trabajando o no trabajando";
+    public static final String OPCIONLEMP5 = "5. Mapear empleados";
 
     public static final String MENUOPCION2D = "¿Qué deseas hacer con la lista de Escenarios?";
     public static final String OPCION2D1 = "1. Listar Escenarios";

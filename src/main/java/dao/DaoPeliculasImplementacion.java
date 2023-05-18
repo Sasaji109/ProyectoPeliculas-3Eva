@@ -4,9 +4,7 @@ import common.IdiomaException;
 import domain.Empleado;
 import domain.Escenario;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class DaoPeliculasImplementacion implements DaoPeliculas {
@@ -90,6 +88,24 @@ public class DaoPeliculasImplementacion implements DaoPeliculas {
     }
 
     @Override
+    public Map<String, List<Empleado>> dividirEmpleado(List<Empleado> empleados) {
+        Map<String, List<Empleado>> empleadosPorTrabajo = new HashMap<>();
+
+        for (Empleado empleado : empleados) {
+            String trabajo = empleado.getTrabajo();
+            if (empleadosPorTrabajo.containsKey(trabajo)) {
+                empleadosPorTrabajo.get(trabajo).add(empleado);
+            } else {
+                List<Empleado> listaEmpleados = new ArrayList<>();
+                listaEmpleados.add(empleado);
+                empleadosPorTrabajo.put(trabajo, listaEmpleados);
+            }
+        }
+
+        return empleadosPorTrabajo;
+    }
+
+    @Override
     public boolean isEmptyEscenariosSet() {
         return daoBaseDeDatos.getListaEscenarios().isEmpty();
     }
@@ -129,8 +145,12 @@ public class DaoPeliculasImplementacion implements DaoPeliculas {
     }
 
     @Override
-    public Set<Escenario> listarEscenario(String lugar) {
-        return daoBaseDeDatos.getListaEscenarios().stream().filter(escenario -> escenario.getLugar().equals(lugar)).collect(Collectors.toSet());
+    public Set<Escenario> listarEscenarioLUGAR(boolean orden) {
+        Comparator<Escenario> comparador = Comparator.comparing(Escenario::getLugar);
+        if (!orden) {
+            comparador = comparador.reversed();
+        }
+        return daoBaseDeDatos.getListaEscenarios().stream().sorted(comparador).collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
     @Override

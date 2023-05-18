@@ -101,12 +101,11 @@ public class GestionPrograma {
 
         System.out.println("Ahora te toca contratar a los empleados. Escoge la opción que desees");
         System.out.println("1. Ver lista completa de empleados");
-        System.out.println("2. Buscar empleado por NIF");
+        System.out.println("2. Ver lista ordenada de los empleado por su NIF");
         System.out.println("3. Buscar empleados por rango de sueldo");
         System.out.println("4. Añadir empleado a la lista de la película");
         System.out.println("5. Ver lista completa de empleados de la película");
         System.out.println("6. Pasar al siguiente paso (Si haces esto no podrás volver atrás)");
-        System.out.println("7. Salir");
         int opcion = lector.nextInt();
         do {
 
@@ -115,10 +114,10 @@ public class GestionPrograma {
                     System.out.println(iGestionPeliculas.getListaEmpleado());
                     break;
                 case 2:
-                    System.out.println("Introduce el NIF");
-                    String NIF = lector.nextLine();
+                    System.out.println("¿Deseas listar los empleados por su NIF de forma ascendente(true) o descendente(false)?");
+                    boolean orden = lector.nextBoolean();
                     lector.nextLine();
-                    System.out.println(iGestionPeliculas.listarEmpleado(NIF));
+                    System.out.println(iGestionPeliculas.listarEmpleadoNIF(orden));
                     break;
                 case 3:
                     System.out.println("Introduce el sueldo mínimo");
@@ -128,19 +127,28 @@ public class GestionPrograma {
                     System.out.println(iGestionPeliculas.listarEmpleado(sueldoMin, sueldoMax));
                     break;
                 case 4:
-                    //Añadir empleado
+                    System.out.print("Ingrese el NIF del empleado que quiere contratar para la película: ");
+                    String nif = lector.nextLine();
+
+                    for (Empleado empleado : empleados) {
+                        if (empleado.getNIF().equals(nif)) {
+                            empleadosPelicula.add(empleado);
+                            empleado.setTrabajando(true);
+                            System.out.println("Empleado contratado para la película.");
+                        }
+                    }
+                    System.out.println("Empleado con NIF " + nif + " no ha sido encontrado en la lista general de empleados.");
                     break;
                 case 5:
                     System.out.println(empleadosPelicula);
                     break;
-                case 6:
-                    alquilarEscenarios();
-                    break;
                 default:
-                    System.out.println(Constantes.OPCIONINCORRECTA);
+                    if (opcion !=6) {
+                        System.out.println(Constantes.OPCIONINCORRECTA);
+                    }
                     break;
             }
-        } while(opcion!=7);
+        } while(opcion!=6);
         return empleadosPelicula;
     }
 
@@ -156,7 +164,6 @@ public class GestionPrograma {
         System.out.println("4. Añadir escenario a la lista de la película");
         System.out.println("5. Ver lista completa de escenarios de la película");
         System.out.println("6. Pasar al siguiente paso (Si haces esto no podrás volver atrás)");
-        System.out.println("7. Salir");
         int opcion = lector.nextInt();
         do {
 
@@ -177,19 +184,28 @@ public class GestionPrograma {
                     System.out.println(iGestionPeliculas.listarEscenario(alquilerMin, alquilerMax));
                     break;
                 case 4:
-                    //Añadir escenario
+                    System.out.print("Ingrese el id del escenario que quiere alquilar para la película: ");
+                    int identificador = lector.nextInt();
+
+                    for (Escenario escenario : escenarios) {
+                        if (escenario.getId() == identificador) {
+                            escenariosPelicula.add(escenario);
+                            escenario.setEnUso(true);
+                            System.out.println("Escenario alquilado para la película.");
+                        }
+                    }
+                    System.out.println("Escenario con id " + identificador + " no ha sido encontrado en la lista general de escenarios.");
                     break;
                 case 5:
                     System.out.println(escenariosPelicula);
                     break;
-                case 6:
-                    alquilarEscenarios();
-                    break;
                 default:
-                    System.out.println(Constantes.OPCIONINCORRECTA);
+                    if (opcion !=6) {
+                        System.out.println(Constantes.OPCIONINCORRECTA);
+                    }
                     break;
             }
-        } while(opcion!=7);
+        } while(opcion!=6);
         return escenariosPelicula;
     }
 

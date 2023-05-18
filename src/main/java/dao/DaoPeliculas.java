@@ -14,9 +14,9 @@ public interface DaoPeliculas {
     void eliminarEmpleado(String NIF);
     void modificarEmpleado(Empleado empleado);
     void eliminarListaEmpleados(List <Empleado> empleados);
-    List<Empleado> listarEmpleado(String NIF);
+    List<Empleado> listarEmpleadoNIF(boolean orden);
     List<Empleado> listarEmpleado(double sueldo1, double sueldo2);
-    List<Empleado> listarEmpleado(String NIF, double sueldo);
+    List<Empleado> listarEmpleadoSUELDONIF(boolean orden);
     List<Empleado> listarEmpleado(boolean trabajando);
 
     boolean isEmptyEscenariosSet();

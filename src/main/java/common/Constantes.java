@@ -5,8 +5,9 @@ public class Constantes {
     public static final String GESTIONPROGRAMA = "1. Iniciar el Programa";
     public static final String GESTIONDATOS = "2. Gestionar los Datos";
     public static final String SALIR = "3. Salir de la Aplicación";
-    public static final String SALIR2 = "6. Salir de la Aplicación";
-    public static final String SALIR3 = "5. Salir de la Aplicación";
+    public static final String SALIR2 = "6. Ir hacia atrás";
+    public static final String SALIR3 = "5. Ir hacia atrás";
+    public static final String SALIR4 = "3. Ir hacia atrás";
 
     public static final String CORREO = "Introduce tu correo electrónico:";
     public static final String CONTRASENA = "Introduce tu contraseña:";
@@ -29,8 +30,8 @@ public class Constantes {
 
     public static final String MENULISTAREMPLEADOS ="¿De qué forma deseas listar los empleados?";
     public static final String OPCIONLEMP1 = "1. Listar por NIF";
-    public static final String OPCIONLEMP2 = "2. Listar por sueldo";
-    public static final String OPCIONLEMP3 = "3. Listar por NIF y sueldo";
+    public static final String OPCIONLEMP2 = "2. Listar por sueldo dentro de un rango";
+    public static final String OPCIONLEMP3 = "3. Listar por sueldo y NIF";
     public static final String OPCIONLEMP4 = "4. Listar por trabajando o no trabajando";
 
     public static final String MENUOPCION2D = "¿Qué deseas hacer con la lista de Escenarios?";

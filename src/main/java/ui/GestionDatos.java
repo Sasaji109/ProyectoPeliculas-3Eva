@@ -50,7 +50,7 @@ public class GestionDatos {
         iGestionPeliculas.escribirFicheroEscenarios();
 
         do {
-            System.out.println(Constantes.MENUGESTIONAR+"\n"+Constantes.OPCION1D+"\n"+Constantes.OPCION2D+"\n"+Constantes.SALIR);
+            System.out.println(Constantes.MENUGESTIONAR+"\n"+Constantes.OPCION1D+"\n"+Constantes.OPCION2D+"\n"+Constantes.SALIR4);
             try {
                 opcion = lector.nextInt();
             } catch (InputMismatchException e) {
@@ -116,15 +116,12 @@ public class GestionDatos {
                 case 3:
                     System.out.print("Introduce el NIF del empleado: ");
                     NIF = lector.nextLine();
-                    lector.nextLine();
                     System.out.print("Introduce el nombre del empleado: ");
                     nombre = lector.nextLine();
-                    lector.nextLine();
                     System.out.print("Introduce el salario del empleado: ");
                     salario = lector.nextDouble();
                     System.out.print("Introduce el trabajo del empleado: ");
                     trabajo = lector.nextLine();
-                    lector.nextLine();
                     System.out.print("Indica si el empleado está trabajando (true/false): ");
                     trabajando = lector.nextBoolean();
                     lector.nextLine();
@@ -141,7 +138,9 @@ public class GestionDatos {
                     iGestionPeliculas.eliminarListaEmpleados(empleados);
                     break;
                 default:
-                    System.out.println(Constantes.OPCIONINCORRECTA);
+                    if (opcion !=6) {
+                        System.out.println(Constantes.OPCIONINCORRECTA);
+                    }
                     break;
             }
         } while (opcion!=6);
@@ -150,9 +149,8 @@ public class GestionDatos {
     public void opcionesListarEmpleados() {
         Scanner lector = new Scanner(System.in);
         List<Empleado> empleados = iGestionPeliculas.cargarFicheroEmpleados();
-        String NIF;
+        boolean orden;
         boolean trabajando;
-        double sueldo;
         int opcion = 0;
         do {
             System.out.println(Constantes.MENULISTAREMPLEADOS+"\n"+Constantes.OPCIONLEMP1+"\n"+Constantes.OPCIONLEMP2+"\n"+Constantes.OPCIONLEMP3+"\n"+Constantes.OPCIONLEMP4+"\n"+Constantes.SALIR3);
@@ -165,10 +163,10 @@ public class GestionDatos {
             }
             switch (opcion) {
                 case 1:
-                    System.out.println("Introduce el NIF");
-                    NIF = lector.nextLine();
+                    System.out.println("¿Deseas listar los empleados por su NIF de forma ascendente(true) o descendente(false)?");
+                    orden = lector.nextBoolean();
                     lector.nextLine();
-                    System.out.println(iGestionPeliculas.listarEmpleado(NIF));
+                    System.out.println(iGestionPeliculas.listarEmpleadoNIF(orden));
                     break;
                 case 2:
                     System.out.println("Introduce el sueldo mínimo");
@@ -178,13 +176,10 @@ public class GestionDatos {
                     System.out.println(iGestionPeliculas.listarEmpleado(sueldoMin, sueldoMax));
                     break;
                 case 3:
-                    System.out.println("Introduce el NIF");
-                    NIF = lector.nextLine();
+                    System.out.println("¿Deseas listar los empleados por su sueldo de forma ascendente(true) o descendente(false)?");
+                    orden = lector.nextBoolean();
                     lector.nextLine();
-                    System.out.println("Introduce el sueldo");
-                    sueldo = lector.nextDouble();
-                    lector.nextLine();
-                    System.out.println(iGestionPeliculas.listarEmpleado(NIF, sueldo));
+                    System.out.println(iGestionPeliculas.listarEmpleadoSUELDONIF(orden));
                     break;
                 case 4:
                     System.out.println("¿Deseas listar los empleados que están trabajando? (true/false)");
@@ -196,7 +191,7 @@ public class GestionDatos {
                     System.out.println(Constantes.OPCIONINCORRECTA);
                     break;
             }
-        } while (opcion!=6);
+        } while (opcion!=5);
     }
 
     public void opcion2D() {
@@ -258,7 +253,9 @@ public class GestionDatos {
                     iGestionPeliculas.eliminarListaEscenarios(escenarios);
                     break;
                 default:
-                    System.out.println(Constantes.OPCIONINCORRECTA);
+                    if (opcion !=6) {
+                        System.out.println(Constantes.OPCIONINCORRECTA);
+                    }
                     break;
             }
         } while (opcion!=6);
@@ -300,13 +297,15 @@ public class GestionDatos {
                     System.out.println(iGestionPeliculas.listarEscenario(alquilerMin, alquilerMax));
                     break;
                 case 4:
-                    System.out.println("¿Deseas listar los empleados que están trabajando? (true/false)");
+                    System.out.println("¿Deseas listar los empleados que están en uso? (true/false)");
                     enUso = lector.nextBoolean();
                     lector.nextLine();
                     System.out.println(iGestionPeliculas.listarEscenario(enUso));
                     break;
                 default:
-                    System.out.println(Constantes.OPCIONINCORRECTA);
+                    if (opcion !=5) {
+                        System.out.println(Constantes.OPCIONINCORRECTA);
+                    }
                     break;
             }
         } while (opcion!=5);

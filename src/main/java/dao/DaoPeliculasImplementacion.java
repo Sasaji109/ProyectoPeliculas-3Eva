@@ -4,6 +4,7 @@ import common.IdiomaException;
 import domain.Empleado;
 import domain.Escenario;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -57,8 +58,12 @@ public class DaoPeliculasImplementacion implements DaoPeliculas {
     }
 
     @Override
-    public List<Empleado> listarEmpleado(String NIF) {
-        return daoBaseDeDatos.getListaEmpleados().stream().filter(empleado -> empleado.getNIF().equals(NIF)).collect(Collectors.toList());
+    public List<Empleado> listarEmpleadoNIF(boolean orden) {
+        Comparator<Empleado> comparador = Comparator.comparing(Empleado::getNIF);
+        if (!orden) {
+            comparador = comparador.reversed();
+        }
+        return daoBaseDeDatos.getListaEmpleados().stream().sorted(comparador).collect(Collectors.toList());
     }
 
     @Override
@@ -67,9 +72,16 @@ public class DaoPeliculasImplementacion implements DaoPeliculas {
                         && empleado.getSalario() < sueldo2).collect(Collectors.toList());}
 
     @Override
-    public List<Empleado> listarEmpleado(String NIF, double sueldo) {
-        return daoBaseDeDatos.getListaEmpleados().stream().filter(empleado -> empleado.getNIF().equals(NIF)
-                && empleado.getSalario() == sueldo).collect(Collectors.toList());
+    public List<Empleado> listarEmpleadoSUELDONIF(boolean orden) {
+        Comparator<Empleado> comparador = Comparator.comparingDouble(Empleado::getSalario);
+
+        if (orden) {
+            comparador = comparador.thenComparing(Empleado::getNIF);
+        } else {
+            comparador = comparador.reversed().thenComparing(Empleado::getNIF);
+        }
+
+        return daoBaseDeDatos.getListaEmpleados().stream().sorted(comparador).collect(Collectors.toList());
     }
 
     @Override

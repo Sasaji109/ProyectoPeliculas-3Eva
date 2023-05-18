@@ -55,8 +55,8 @@ public class GestionPeliculas implements IGestionPeliculas {
     }
 
     @Override
-    public List<Empleado> listarEmpleado(String NIF) {
-        return daoPeliculas.listarEmpleado(NIF);
+    public List<Empleado> listarEmpleadoNIF(boolean orden) {
+        return daoPeliculas.listarEmpleadoNIF(orden);
     }
 
     @Override
@@ -65,8 +65,8 @@ public class GestionPeliculas implements IGestionPeliculas {
     }
 
     @Override
-    public List<Empleado> listarEmpleado(String NIF, double sueldo) {
-        return daoPeliculas.listarEmpleado(NIF, sueldo);
+    public List<Empleado> listarEmpleadoSUELDONIF(boolean orden) {
+        return daoPeliculas.listarEmpleadoSUELDONIF(orden);
     }
 
     @Override

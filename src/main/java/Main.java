@@ -1,9 +1,6 @@
 import common.Constantes;
 import ui.GestionDatos;
 import ui.GestionPrograma;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

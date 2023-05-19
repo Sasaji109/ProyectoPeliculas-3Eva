@@ -16,7 +16,7 @@ public class Main {
             try {
                 opcion = lector.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("Las letras no están permitidas, introduce un número");
+                System.out.println(Constantes.MISMATCH);
                 lector.next();
                 continue;
             }
@@ -33,7 +33,9 @@ public class Main {
                     }
                     break;
                 default:
-                    System.out.println(Constantes.OPCIONINCORRECTA);
+                    if (opcion !=3) {
+                        System.out.println(Constantes.OPCIONINCORRECTA);
+                    }
                     break;
             }
         } while (opcion!=3);

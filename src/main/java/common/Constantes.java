@@ -48,6 +48,12 @@ public class Constantes {
     public static final String OPCIONLESC3 = "3. Listar por alquiler";
     public static final String OPCIONLESC4 = "4. Listar por en uso o no en uso";
 
+    public static final String EMPLEADONIF = "Introduce el NIF del empleado: ";
+    public static final String EMPLEADONOMBRE = "Introduce el nombre del empleado: ";
+    public static final String EMPLEADOSALARIO = "Introduce el salario del empleado: ";
+    public static final String EMPLEADOTRABAJO = "Introduce el trabajo del empleado: ";
+    public static final String EMPLEADOTRABAJANDO = "Indica si el empleado está trabajando (true/false): ";
+
     public static final String OPCIONINCORRECTA = "Opción incorrecta, vuelve a introducirla";
     public static final String MANTENIMIENTO = "Esta función está en mantenimiento en estos momentos";
     public static final String MISMATCH = "Las letras no están permitidas, introduce un número";

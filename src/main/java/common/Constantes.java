@@ -50,4 +50,5 @@ public class Constantes {
 
     public static final String OPCIONINCORRECTA = "Opción incorrecta, vuelve a introducirla";
     public static final String MANTENIMIENTO = "Esta función está en mantenimiento en estos momentos";
+    public static final String MISMATCH = "Las letras no están permitidas, introduce un número";
 }

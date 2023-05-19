@@ -23,7 +23,7 @@ public class Guion {
         this.idioma = idioma;
     }
 
-    public static void imprimirGuion(Guion guion) {
+    public void imprimirGuion(Guion guion) {
         Properties properties = new Properties();
         try (InputStream input = Guion.class.getClassLoader().getResourceAsStream("config.properties")) {
             properties.load(input);

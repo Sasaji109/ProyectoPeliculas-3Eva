@@ -35,7 +35,7 @@ public class GestionPrograma {
             try {
                 opcion = lector.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("Las letras no están permitidas, introduce un número");
+                System.out.println(Constantes.MISMATCH);
                 lector.next();
                 continue;
             }
@@ -44,10 +44,13 @@ public class GestionPrograma {
                     calcularCostes(organizarPelicula());
                     break;
                 case 2:
-                    calcularCostes(cargarPelicula());
+                    System.out.println(Constantes.MANTENIMIENTO);
+                    //calcularCostes(cargarPelicula());
                     break;
                 default:
-                    System.out.println(Constantes.OPCIONINCORRECTA);
+                    if (opcion !=3) {
+                        System.out.println(Constantes.OPCIONINCORRECTA);
+                    }
                     break;
             }
         } while (opcion!=3);
@@ -58,27 +61,27 @@ public class GestionPrograma {
         iGestionPeliculas.crearFicheroBinarioPeliculas();
 
         System.out.println("Ingresa el nombre de tu película:");
-        String nombre = scanner.nextLine();
+        String nombre = scanner.next();
         System.out.println("Ingresa el presupuesto que tendrá tu película, con formato double:");
         double presupuesto = scanner.nextDouble();
         System.out.println("Vamos con el guión");
         System.out.print("Número de páginas del guion: ");
         int numPag = scanner.nextInt();
-        scanner.nextLine();
         System.out.print("Nombre del escritor: ");
-        String nombreEscritor = scanner.nextLine();
+        String nombreEscritor = scanner.next();
         System.out.print("NIF del escritor: ");
-        String nifEscritor = scanner.nextLine();
+        String nifEscritor = scanner.next();
         System.out.print("Salario del escritor, en double: ");
         double salarioEscritor = scanner.nextDouble();
-        scanner.nextLine();
         System.out.print("Idioma del guion: ");
-        String idioma = scanner.nextLine();
+        String idioma = scanner.next();
 
         try {
             Comprobacion.IdiomaCorrecto(idioma);
         } catch (IdiomaException e) {
-            throw new RuntimeException(e);
+            System.out.println(e);
+            System.out.print("Vuelve a introducir el idioma del guion: ");
+            idioma = scanner.next();
         }
 
         Empleado guionista = new Empleado(nifEscritor, nombreEscritor, salarioEscritor, "guionista", true);
@@ -108,7 +111,7 @@ public class GestionPrograma {
             try {
                 opcion = lector.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("Las letras no están permitidas, introduce un número");
+                System.out.println(Constantes.MISMATCH);
                 lector.next();
                 continue;
             }
@@ -119,7 +122,6 @@ public class GestionPrograma {
                 case 2:
                     System.out.println("¿Deseas listar los empleados por su NIF de forma ascendente(true) o descendente(false)?");
                     boolean orden = lector.nextBoolean();
-                    lector.nextLine();
                     System.out.println(iGestionPeliculas.listarEmpleadoNIF(orden));
                     break;
                 case 3:
@@ -131,7 +133,7 @@ public class GestionPrograma {
                     break;
                 case 4:
                     System.out.print("Ingrese el NIF del empleado que quiere contratar para la película: ");
-                    String nif = lector.nextLine();
+                    String nif = lector.next();
                     for (Empleado empleado : empleados) {
                         if (empleado.getNIF().equals(nif)) {
                             empleadosPelicula.add(empleado);
@@ -171,7 +173,7 @@ public class GestionPrograma {
             try {
                 opcion = lector.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("Las letras no están permitidas, introduce un número");
+                System.out.println(Constantes.MISMATCH);
                 lector.next();
                 continue;
             }
@@ -222,6 +224,8 @@ public class GestionPrograma {
 
     public void calcularCostes(Pelicula pelicula){
 
+        double costeGuionista = pelicula.getGuion().getEscritor().getSalario();
+
         double costeEmpleados = 0.0;
         for (Empleado empleado : pelicula.getEmpleadosPelicula()) {
             costeEmpleados += empleado.getSalario();
@@ -232,17 +236,21 @@ public class GestionPrograma {
             costeEscenarios += escenario.getAlquiler();
         }
 
-        double costeTotal = costeEmpleados + costeEscenarios;
+        double costeTotal = costeGuionista + costeEmpleados + costeEscenarios;
         double costeSobrante = pelicula.getPresupuesto()-costeTotal;
         if (pelicula.getPresupuesto() >= costeTotal) {
             System.out.println("La película puede producirse. Hay presupuesto suficiente.");
-            System.out.println("Sobran " + costeSobrante + "euros");
+            System.out.println("Sobran " + costeSobrante + " euros");
         } else {
             System.out.println("La película no puede producirse. No hay suficiente presupuesto.");
-            System.out.println("Faltan " + costeSobrante + "euros para poder producirse la pelicula");
+            System.out.println("Faltan " + costeSobrante + " euros para poder producirse la pelicula");
         }
 
-        System.out.println("Gracias por crear tu película. Esto es cine");
+        Guion guion = pelicula.getGuion();
+        guion.imprimirGuion(guion);
+        System.out.println(pelicula);
+
+        System.out.println("Gracias por crear tu película. Esto es cine \n");
     }
 
 }

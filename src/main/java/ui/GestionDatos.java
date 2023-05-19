@@ -54,7 +54,7 @@ public class GestionDatos {
             try {
                 opcion = lector.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("Las letras no están permitidas, introduce un número");
+                System.out.println(Constantes.MISMATCH);
                 lector.next();
                 continue;
             }
@@ -66,7 +66,9 @@ public class GestionDatos {
                     opcion2D();
                     break;
                 default:
-                    System.out.println(Constantes.OPCIONINCORRECTA);
+                    if (opcion !=3) {
+                        System.out.println(Constantes.OPCIONINCORRECTA);
+                    }
                     break;
             }
         } while (opcion!=3);
@@ -87,7 +89,7 @@ public class GestionDatos {
             try {
                 opcion = lector.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("Las letras no están permitidas, introduce un número");
+                System.out.println(Constantes.MISMATCH);
                 lector.next();
                 continue;
             }
@@ -97,43 +99,35 @@ public class GestionDatos {
                     break;
                 case 2:
                     System.out.print("Introduce el NIF del empleado: ");
-                    NIF = lector.nextLine();
-                    lector.nextLine();
+                    NIF = lector.next();
                     System.out.print("Introduce el nombre del empleado: ");
-                    nombre = lector.nextLine();
-                    lector.nextLine();
+                    nombre = lector.next();
                     System.out.print("Introduce el salario del empleado: ");
                     salario = lector.nextDouble();
                     System.out.print("Introduce el trabajo del empleado: ");
-                    trabajo = lector.nextLine();
-                    lector.nextLine();
+                    trabajo = lector.next();
                     System.out.print("Indica si el empleado está trabajando (true/false): ");
                     trabajando = lector.nextBoolean();
-                    lector.nextLine();
                     empleado = new Empleado(NIF, nombre, salario, trabajo, trabajando);
                     iGestionPeliculas.insertarEmpleado(empleado);
                     break;
                 case 3:
                     System.out.print("Introduce el NIF del empleado: ");
-                    NIF = lector.nextLine();
-                    lector.nextLine();
+                    NIF = lector.next();
                     System.out.print("Introduce el nombre del empleado: ");
-                    nombre = lector.nextLine();
+                    nombre = lector.next();
                     System.out.print("Introduce el salario del empleado: ");
                     salario = lector.nextDouble();
-                    lector.nextLine();
                     System.out.print("Introduce el trabajo del empleado: ");
-                    trabajo = lector.nextLine();
+                    trabajo = lector.next();
                     System.out.print("Indica si el empleado está trabajando (true/false): ");
                     trabajando = lector.nextBoolean();
-                    lector.nextLine();
                     empleado = new Empleado(NIF, nombre, salario, trabajo, trabajando);
                     iGestionPeliculas.modificarEmpleado(empleado);
                     break;
                 case 4:
                     System.out.println("Introduce el NIF");
-                    NIF = lector.nextLine();
-                    lector.nextLine();
+                    NIF = lector.next();
                     iGestionPeliculas.eliminarEmpleado(NIF);
                     break;
                 case 5:
@@ -160,7 +154,7 @@ public class GestionDatos {
             try {
                 opcion = lector.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("Las letras no están permitidas, introduce un número");
+                System.out.println(Constantes.MISMATCH);
                 lector.next();
                 continue;
             }
@@ -168,7 +162,6 @@ public class GestionDatos {
                 case 1:
                     System.out.println("¿Deseas listar los empleados por su NIF de forma ascendente(true) o descendente(false)?");
                     orden = lector.nextBoolean();
-                    lector.nextLine();
                     System.out.println(iGestionPeliculas.listarEmpleadoNIF(orden));
                     break;
                 case 2:
@@ -181,7 +174,6 @@ public class GestionDatos {
                 case 3:
                     System.out.println("¿Deseas listar los empleados por su sueldo de forma ascendente(true) o descendente(false)?");
                     orden = lector.nextBoolean();
-                    lector.nextLine();
                     System.out.println(iGestionPeliculas.listarEmpleadoSUELDONIF(orden));
                     break;
                 case 4:
@@ -194,7 +186,9 @@ public class GestionDatos {
                     System.out.println(iGestionPeliculas.dividirEmpleado(empleados));
                     break;
                 default:
-                    System.out.println(Constantes.OPCIONINCORRECTA);
+                    if (opcion !=6) {
+                        System.out.println(Constantes.OPCIONINCORRECTA);
+                    }
                     break;
             }
         } while (opcion!=6);
@@ -214,7 +208,7 @@ public class GestionDatos {
             try {
                 opcion = lector.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("Las letras no están permitidas, introduce un número");
+                System.out.println(Constantes.MISMATCH);
                 lector.next();
                 continue;
             }
@@ -226,13 +220,11 @@ public class GestionDatos {
                     System.out.print("Introduce el id del escenario: ");
                     id = lector.nextInt();
                     System.out.print("Introduce el lugar del escenario: ");
-                    lugar = lector.nextLine();
-                    lector.nextLine();
+                    lugar = lector.next();
                     System.out.print("Introduce el alquiler del escenario: ");
                     alquiler = lector.nextDouble();
                     System.out.print("Indica si el escenario está en uso (true/false): ");
                     enUso = lector.nextBoolean();
-                    lector.nextLine();
                     escenario = new Escenario(id, lugar, alquiler, enUso);
                     iGestionPeliculas.insertarEscenario(escenario);
                     break;
@@ -240,13 +232,11 @@ public class GestionDatos {
                     System.out.print("Introduce el id del escenario: ");
                     id = lector.nextInt();
                     System.out.print("Introduce el lugar del escenario: ");
-                    lugar = lector.nextLine();
-                    lector.nextLine();
+                    lugar = lector.next();
                     System.out.print("Introduce el alquiler del escenario: ");
                     alquiler = lector.nextDouble();
                     System.out.print("Indica si el escenario está en uso (true/false): ");
                     enUso = lector.nextBoolean();
-                    lector.nextLine();
                     escenario = new Escenario(id, lugar, alquiler, enUso);
                     iGestionPeliculas.modificarEscenario(escenario);
                     break;
@@ -279,7 +269,7 @@ public class GestionDatos {
             try {
                 opcion = lector.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("Las letras no están permitidas, introduce un número");
+                System.out.println(Constantes.MISMATCH);
                 lector.next();
                 continue;
             }

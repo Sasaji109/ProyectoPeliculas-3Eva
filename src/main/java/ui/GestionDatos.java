@@ -98,37 +98,40 @@ public class GestionDatos {
                     opcionesListarEmpleados();
                     break;
                 case 2:
-                    System.out.print("Introduce el NIF del empleado: ");
+                    System.out.print(Constantes.EMPLEADONIF);
                     NIF = lector.next();
-                    System.out.print("Introduce el nombre del empleado: ");
+                    System.out.print(Constantes.EMPLEADONOMBRE);
                     nombre = lector.next();
-                    System.out.print("Introduce el salario del empleado: ");
+                    System.out.print(Constantes.EMPLEADOSALARIO);
                     salario = lector.nextDouble();
-                    System.out.print("Introduce el trabajo del empleado: ");
+                    System.out.print(Constantes.EMPLEADOTRABAJO);
                     trabajo = lector.next();
-                    System.out.print("Indica si el empleado está trabajando (true/false): ");
+                    System.out.print(Constantes.EMPLEADOTRABAJANDO);
                     trabajando = lector.nextBoolean();
                     empleado = new Empleado(NIF, nombre, salario, trabajo, trabajando);
                     iGestionPeliculas.insertarEmpleado(empleado);
+                    System.out.println(empleados);
                     break;
                 case 3:
-                    System.out.print("Introduce el NIF del empleado: ");
+                    System.out.print(Constantes.EMPLEADONIF);
                     NIF = lector.next();
-                    System.out.print("Introduce el nombre del empleado: ");
+                    System.out.print(Constantes.EMPLEADONOMBRE);
                     nombre = lector.next();
-                    System.out.print("Introduce el salario del empleado: ");
+                    System.out.print(Constantes.EMPLEADOSALARIO);
                     salario = lector.nextDouble();
-                    System.out.print("Introduce el trabajo del empleado: ");
+                    System.out.print(Constantes.EMPLEADOTRABAJO);
                     trabajo = lector.next();
-                    System.out.print("Indica si el empleado está trabajando (true/false): ");
+                    System.out.print(Constantes.EMPLEADOTRABAJANDO);
                     trabajando = lector.nextBoolean();
                     empleado = new Empleado(NIF, nombre, salario, trabajo, trabajando);
                     iGestionPeliculas.modificarEmpleado(empleado);
+                    System.out.println(empleados);
                     break;
                 case 4:
-                    System.out.println("Introduce el NIF");
+                    System.out.println(Constantes.EMPLEADONIF);
                     NIF = lector.next();
                     iGestionPeliculas.eliminarEmpleado(NIF);
+                    System.out.println(empleados);
                     break;
                 case 5:
                     iGestionPeliculas.eliminarListaEmpleados(empleados);

@@ -1,7 +1,9 @@
 package service;
 
+import common.IdiomaException;
 import domain.Empleado;
 import domain.Escenario;
+import domain.Guion;
 import domain.Pelicula;
 
 import java.util.List;
@@ -44,5 +46,7 @@ public interface IGestionPeliculas {
     void crearFicheroBinarioPeliculas();
     void escribirFicheroBinarioPeliculas(Pelicula pelicula);
     Pelicula cargarFicheroBinarioPeliculas();
+
+    void manejarGuion(Guion guion) throws IdiomaException;
 }
 

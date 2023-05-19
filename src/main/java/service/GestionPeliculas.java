@@ -1,10 +1,12 @@
 package service;
 
+import common.IdiomaException;
 import dao.DaoPeliculas;
 import dao.DaoPeliculasFicheros;
 import dao.DaoPeliculasImplementacion;
 import domain.Empleado;
 import domain.Escenario;
+import domain.Guion;
 import domain.Pelicula;
 import java.util.List;
 import java.util.Map;
@@ -178,4 +180,8 @@ public class GestionPeliculas implements IGestionPeliculas {
         return daoPeliculasFicheros.cargarFicheroBinarioPeliculas();
     }
 
+    @Override
+    public void manejarGuion(Guion guion) throws IdiomaException {
+        daoPeliculas.manejarGuion(guion);
+    }
 }

@@ -3,6 +3,8 @@ package dao;
 import common.IdiomaException;
 import domain.Empleado;
 import domain.Escenario;
+import domain.Guion;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -31,4 +33,6 @@ public interface DaoPeliculas {
     Set<Escenario> listarEscenarioLUGAR(boolean orden);
     Set<Escenario> listarEscenario(double alquiler1, double alquiler2);
     Set<Escenario> listarEscenario(boolean enUso);
+
+    void manejarGuion(Guion guion) throws IdiomaException;
 }

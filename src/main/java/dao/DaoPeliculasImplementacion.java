@@ -1,8 +1,10 @@
 package dao;
 
+import common.Idioma;
 import common.IdiomaException;
 import domain.Empleado;
 import domain.Escenario;
+import domain.Guion;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -162,5 +164,14 @@ public class DaoPeliculasImplementacion implements DaoPeliculas {
     @Override
     public Set<Escenario> listarEscenario(boolean enUso) {
         return daoBaseDeDatos.getListaEscenarios().stream().filter(escenario -> escenario.isEnUso() == enUso).collect(Collectors.toSet());
+    }
+
+    @Override
+    public void manejarGuion(Guion guion) throws IdiomaException {
+        Idioma idiomaGuion = guion.getIdioma();
+
+        if (!Arrays.asList(Idioma.values()).contains(idiomaGuion)) {
+            throw new IdiomaException(idiomaGuion.toString());
+        }
     }
 }

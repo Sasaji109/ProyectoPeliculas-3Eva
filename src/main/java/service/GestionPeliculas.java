@@ -1,5 +1,6 @@
 package service;
 
+import common.Comprobacion;
 import common.IdiomaException;
 import dao.DaoPeliculas;
 import dao.DaoPeliculasFicheros;
@@ -181,7 +182,8 @@ public class GestionPeliculas implements IGestionPeliculas {
     }
 
     @Override
-    public void manejarGuion(Guion guion) throws IdiomaException {
-        daoPeliculas.manejarGuion(guion);
+    public boolean manejarGuion(Guion guion) throws IdiomaException {
+        Comprobacion.IdiomaCorrecto(guion.getIdioma());
+        return daoPeliculas.manejarGuion(guion);
     }
 }

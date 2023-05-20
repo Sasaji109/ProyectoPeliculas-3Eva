@@ -167,11 +167,8 @@ public class DaoPeliculasImplementacion implements DaoPeliculas {
     }
 
     @Override
-    public void manejarGuion(Guion guion) throws IdiomaException {
-        Idioma idiomaGuion = guion.getIdioma();
-
-        if (!Arrays.asList(Idioma.values()).contains(idiomaGuion)) {
-            throw new IdiomaException(idiomaGuion.toString());
-        }
+    public boolean manejarGuion(Guion guion) {
+        List<Guion> guiones = new ArrayList<>();
+        return guiones.add(guion);
     }
 }

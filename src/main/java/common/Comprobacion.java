@@ -10,4 +10,13 @@ public class Comprobacion {
         }
         throw new IdiomaException(idioma);
     }
+
+    public static void IdiomaCorrecto(Idioma idioma) throws IdiomaException {
+        for (Idioma aux : Idioma.values()) {
+            if (aux == idioma) {
+                return;
+            }
+        }
+        throw new IdiomaException(idioma);
+    }
 }

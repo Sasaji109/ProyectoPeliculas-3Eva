@@ -34,5 +34,5 @@ public interface DaoPeliculas {
     Set<Escenario> listarEscenario(double alquiler1, double alquiler2);
     Set<Escenario> listarEscenario(boolean enUso);
 
-    void manejarGuion(Guion guion) throws IdiomaException;
+    boolean manejarGuion(Guion guion);
 }

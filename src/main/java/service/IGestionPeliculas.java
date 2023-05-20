@@ -47,6 +47,6 @@ public interface IGestionPeliculas {
     void escribirFicheroBinarioPeliculas(Pelicula pelicula);
     Pelicula cargarFicheroBinarioPeliculas();
 
-    void manejarGuion(Guion guion) throws IdiomaException;
+    boolean manejarGuion(Guion guion) throws IdiomaException;
 }
 

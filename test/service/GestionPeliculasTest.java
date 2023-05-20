@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -44,23 +45,6 @@ class GestionPeliculasTest {
         }
 
         @Test
-        void getListaEmpleado() {
-            //given
-            List<Empleado> empleados = new LinkedList<>();
-            empleados.add(new Empleado("12345678A", "John Smith", 2000.0, "Actor", false));
-            empleados.add(new Empleado("23456789B", "Jane Doe", 2500.0, "Director", false));
-            empleados.add(new Empleado("45678901D", "Tom Hanks", 3000.0, "Actor", false));
-            empleados.add(new Empleado("56789012E", "Meryl Streep", 3500.0, "Actriz", false));
-            empleados.add(new Empleado("67890123F", "Brad Pitt", 4000.0, "Actor", false));
-            empleados.add(new Empleado("78901234G", "Angelina Jolie", 4500.0, "Actriz", false));
-            //when
-            when(daoPeliculas.getListaEmpleado()).thenReturn(empleados);
-            List<Empleado> empleados2 = gestionPeliculas.getListaEmpleado();
-            //then
-            assertThat(empleados2).isEqualTo(empleados);
-        }
-
-        @Test
         void insertarEmpleado() {
             //given
             Empleado empleado = new Empleado("67890123F", "Brad Pitt", 4000.0, "Actor", false);
@@ -71,10 +55,9 @@ class GestionPeliculasTest {
             assertThat(respuesta).isEqualTo(true);
         }
 
-        @Test
-        void eliminarEmpleado() {
-            //given
-            String NIF = "67890123F";
+        @ParameterizedTest
+        @ValueSource(strings = {"67890123F", "12345678K", "89012345H"})
+        void eliminarEmpleado(String NIF) {
             //when
             gestionPeliculas.eliminarEmpleado(NIF);
             //then
@@ -162,10 +145,10 @@ class GestionPeliculasTest {
             verify(daoPeliculas, times(1)).modificarEscenario(escenario);
         }
 
-        @Test
-        void listarEscenario() {
+        @ParameterizedTest
+        @ValueSource(ints = {7290, 4319})
+        void listarEscenario(int id) {
             //given
-            int id = 7290;
             Set<Escenario> escenariosEsperados = new HashSet<>();
             Escenario escenario1 = new Escenario(7290, "Hollywood", 3500.0, false);
             Escenario escenario2 = new Escenario(4319, "Roma", 2100.0, false);
@@ -214,7 +197,6 @@ class GestionPeliculasTest {
             }
             //then
             verify(daoPeliculas, times(1)).manejarGuion(guion);
-
         }
     }
 

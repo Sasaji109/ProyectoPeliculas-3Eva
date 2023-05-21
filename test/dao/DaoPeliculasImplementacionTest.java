@@ -92,12 +92,53 @@ class DaoPeliculasImplementacionTest {
             assertEquals(empleadosEsperados, resultado);
         }
 
-        @Test
-        void listarEmpleadoSUELDONIF() {
+        @ParameterizedTest
+        @ValueSource(booleans = {true, false})
+        void listarEmpleadoSUELDONIF(boolean orden) {
+            //given
+            List<Empleado> empleados = new ArrayList<>();
+            empleados.add(new Empleado("01655339L", "Marcos Gómez", 2200.00, "Jefe de producción", false));
+            empleados.add(new Empleado("25896314N", "Sofía Fernández", 1800.0, "Vestuario", false));
+            //when
+            when(daoBaseDeDatos.getListaEmpleados()).thenReturn(empleados);
+            List<Empleado> resultado = daoPeliculasImplementacion.listarEmpleadoSUELDONIF(orden);
+            //then
+            if (orden) {
+                for (int i = 0; i < resultado.size() - 1; i++) {
+                    Empleado empleadoActual = resultado.get(i);
+                    Empleado empleadoSiguiente = resultado.get(i + 1);
+                    double salarioActual = empleadoActual.getSalario();
+                    double salarioSiguiente = empleadoSiguiente.getSalario();
+                    assertTrue(salarioActual <= salarioSiguiente, "El orden ascendente no se cumple");
+                }
+            } else {
+                for (int i = 0; i < resultado.size() - 1; i++) {
+                    Empleado empleadoActual = resultado.get(i);
+                    Empleado empleadoSiguiente = resultado.get(i + 1);
+                    double salarioActual = empleadoActual.getSalario();
+                    double salarioSiguiente = empleadoSiguiente.getSalario();
+                    assertTrue(salarioActual >= salarioSiguiente, "El orden descendente no se cumple");
+                }
+            }
         }
 
-        @Test
-        void testListarEmpleado() {
+        @ParameterizedTest
+        @ValueSource(booleans = {true, false})
+        void testListarEmpleado(boolean trabajando) {
+            //given
+            List<Empleado> empleados = new ArrayList<>();
+            empleados.add(new Empleado("58624791S", "Paula Gómez", 2500.0, "Coordinadora de producción", false));
+            empleados.add(new Empleado("01892473B", "Elena Sánchez", 1800.00, "Coordinadora de producción", false));
+            empleados.add(new Empleado("47851236T", "Carlos Martínez", 2000.0, "Efectos especiales", true));
+            //when
+            when(daoBaseDeDatos.getListaEmpleados()).thenReturn(empleados);
+            List<Empleado> empleadosFiltrados = daoPeliculasImplementacion.listarEmpleado(trabajando);
+            //then
+            if (trabajando) {
+                assertEquals(1, empleadosFiltrados.size());
+            } else {
+                assertEquals(2, empleadosFiltrados.size());
+            }
         }
 
         @Test
@@ -159,16 +200,72 @@ class DaoPeliculasImplementacionTest {
             assertEquals(2, escenarios.size());
         }
 
-        @Test
-        void listarEscenarioLUGAR() {
+        @ParameterizedTest
+        @ValueSource(booleans = {true, false})
+        void listarEscenarioLUGAR(boolean orden) {
+            //given
+            Escenario escenario1 = new Escenario(6750, "Bangkok", 2700.0, false);
+            Escenario escenario2 = new Escenario(2018, "África del Sur", 4000.0, false);
+            Set<Escenario> listaEscenarios = new HashSet<>();
+            listaEscenarios.add(escenario1);
+            listaEscenarios.add(escenario2);
+            //when
+            when(daoBaseDeDatos.getListaEscenarios()).thenReturn(listaEscenarios);
+            Set<Escenario> resultado = daoPeliculasImplementacion.listarEscenarioLUGAR(orden);
+            Set<Escenario> resultadoEsperado = new HashSet<>();
+            //then
+            if (orden) {
+                resultadoEsperado.add(escenario1);
+                resultadoEsperado.add(escenario2);
+            } else {
+                resultadoEsperado.add(escenario2);
+                resultadoEsperado.add(escenario1);
+            }
+            assertEquals(resultadoEsperado, resultado);
+            verify(daoBaseDeDatos, times(1)).getListaEscenarios();
         }
 
-        @Test
-        void testListarEscenario() {
+        @ParameterizedTest
+        @CsvSource({"2000, 2800", "3000, 5000", "2800, 3500"})
+        void testListarEscenario(double alquiler1, double alquiler2) {
+            //given
+            Escenario escenario1 = new Escenario(6750, "Bangkok", 2700.0, false);
+            Escenario escenario2 = new Escenario(2018, "África del Sur", 4000.0, false);
+            Escenario escenario3 = new Escenario(9881, "Estambul", 2900.0, false);
+            Set<Escenario> listaEscenarios = new HashSet<>();
+            listaEscenarios.add(escenario1);
+            listaEscenarios.add(escenario2);
+            listaEscenarios.add(escenario3);
+            //when
+            when(daoBaseDeDatos.getListaEscenarios()).thenReturn(listaEscenarios);
+            Set<Escenario> resultado = daoPeliculasImplementacion.listarEscenario(alquiler1, alquiler2);
+            Set<Escenario> resultadoEsperado = new HashSet<>();
+            //then
+            for (Escenario escenario : listaEscenarios) {
+                if (escenario.getAlquiler() > alquiler1 && escenario.getAlquiler() < alquiler2) {
+                    resultadoEsperado.add(escenario);
+                }
+            }
+            assertEquals(resultadoEsperado, resultado);
         }
 
-        @Test
-        void testListarEscenario1() {
+        @ParameterizedTest
+        @ValueSource(booleans = {true, false})
+        void testListarEscenario1(boolean enUso) {
+            //given
+            Set<Escenario> escenarios = new HashSet<>();
+            escenarios.add(new Escenario(6857, "Berlín", 2200.0, false));
+            escenarios.add(new Escenario(1029, "Ámsterdam", 1800.0, false));
+            escenarios.add(new Escenario(4884, "Nápoles", 2400.0, true));
+            //when
+            when(daoBaseDeDatos.getListaEscenarios()).thenReturn(escenarios);
+            Set<Escenario> escenariosFiltrados = daoPeliculasImplementacion.listarEscenario(enUso);
+            //then
+            if (enUso) {
+                assertEquals(1, escenariosFiltrados.size());
+            } else {
+                assertEquals(2, escenariosFiltrados.size());
+            }
         }
     }
 
